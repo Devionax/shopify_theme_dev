@@ -1,6 +1,7 @@
 
 <div>
 <h1>{{ section.settings.heading }}</h1>
+<p>{{  section.settings.paragraph }}</p>
 </div>
 
 {%schema %}
@@ -13,7 +14,13 @@
     "id": "heading",
     "label": "Heading Text",
     "default" :"this is liquid section!"
-    }
+    },
+    {
+    "type": "richtext",
+    "id": "paragraph",
+    "label": "paragraph Text",
+    "default" :"This is liquid section paragraph!"
+    },
 ],
 "blocks": [],
 "presets": [
