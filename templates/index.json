@@ -13,7 +13,8 @@
       "type": "test",
       "name": "uvi_block",
       "settings": {
-        "heading": "liquid section!"
+        "heading": "liquid section!",
+        "paragraph_UVI": "<ol><li><em>Liquid section paragraph!</em></li></ol>"
       }
     },
     "hero_jVaWmY": {
