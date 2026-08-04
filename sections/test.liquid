@@ -1,32 +1,47 @@
+<style>
+.text-p{
+  font-size: {{ section.settings.paragraph_font }}px ;
+}
+
+</style>
+
 <div>
-<h1>{{ section.settings.heading }}</h1>
-<p>{{  section.settings.paragraph_UVI }}</p>
+  <h1>{{ section.settings.heading }}</h1>
+  <p class="test-p" >{{ section.settings.paragraph_UVI }}</p>
 </div>
 
-{%schema %}
+{% schema %}
 
-{
-"name": "test",
-"settings": [
-    {
-    "type": "text",
-    "id": "heading",
-    "label": "Heading Text",
-    "default" :"this is liquid section!"
-    },
-    {
-  "type": "richtext",
-  "id": "paragraph_UVI",
-  "label": "Paragraph Text",
-  "default": "<p>Liquid section paragraph!</p>"
-}
-],
-"blocks": [],
-"presets": [
-    {
+  {
+    "name": "test",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading Text",
+        "default": "this is liquid section!"
+      }, {
+        "type": "richtext",
+        "id": "paragraph_UVI",
+        "label": "Paragraph Text",
+        "default": "<p>Liquid section paragraph!</p>"
+      }
+      , {
+        "type": "range",
+        "id": "paragraph_font",
+        "label": "Paragraph font",
+        "min": 10,
+        "max": 30,
+        "step": 2,
+        "default": 20
+      }
+    ],
+    "blocks": [],
+    "presets": [
+      {
         "name": "uvi_block"
-    }
-]
-}
+      }
+    ]
+  }
 
 {% endschema %}
