@@ -7,7 +7,7 @@
 
 <div>
   <h1 class="test-p">{{ section.settings.heading }}</h1>
-  <p >{{ section.settings.paragraph_UVI }}</p>
+  <p class="test-p">{{ section.settings.paragraph_UVI }}</p>
 </div>
 
 {% schema %}
@@ -21,7 +21,7 @@
         "label": "Heading Text",
         "default": "this is liquid section!"
       }, {
-        "type": "richtext",
+        "type": "text",
         "id": "paragraph_UVI",
         "label": "Paragraph Text",
         "default": "<p>Liquid section paragraph!</p>"
