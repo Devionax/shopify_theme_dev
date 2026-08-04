@@ -49,12 +49,14 @@
       ref="liveRegion"
     ></div>
     {%- form 'product', product, id: product_form_id, novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
-      <input
-        type="text"
+       <input
+        type="hidden"
         name="id"
         ref="variantId"
         value="{{ variant.id }}"
-       
+        {% if variant.available == false %}
+          disabled
+        {% endif %}
       >
       <input
         type="hidden"
