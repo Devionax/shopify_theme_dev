@@ -14,7 +14,8 @@
       "name": "uvi_block",
       "settings": {
         "heading": "liquid section!",
-        "paragraph_UVI": "<ol><li><em>Liquid section paragraph!</em></li></ol>"
+        "paragraph_UVI": "Liquid section paragraph!",
+        "paragraph_font": 26
       }
     },
     "hero_jVaWmY": {
