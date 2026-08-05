@@ -5,6 +5,11 @@
   .head-color{
   color: {{ section.settings.heading_color }}
   }
+  .faq_coll{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  }
 </style>
 
 <div>
@@ -25,11 +30,13 @@
         </li>
       </ol>
       {% elsif block.type == 'collection_faq' %}
+        <div class="faq_coll">
         <details>
           <summary>{{ block.settings.coll_faq_q }}</summary>
 
           <p>{{ block.settings.coll_faq_a }}.</p>
         </details>
+      </div>
       {% endif %}
     {% endfor %}
 </div>
