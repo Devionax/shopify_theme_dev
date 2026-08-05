@@ -55,19 +55,7 @@
     {% endif %}
   </div>
 
-  <div
-    class="
-      group-block-content
-      {% if request.design_mode %}group-block-content--design-mode{% endif %}
-      layout-panel-flex
-      layout-panel-flex--{{ settings.content_direction | default: 'column' }}
-      {% if settings.vertical_on_mobile %} mobile-column{% endif %}
-    "
-    style="{% render 'layout-panel-style', settings: settings %}"
-  >
-    {{- children -}}
-  </div>
-</div>
+
 
 {% stylesheet %}
   .group-block__link {
