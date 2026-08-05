@@ -13,9 +13,9 @@
 </div>
 
 <div>
-  <ol>
-    {% for block in section.blocks %}
-      {% if block.type == 'collection-list' %}
+  {% for block in section.blocks %}
+    {% if block.type == 'collection-list' %}
+        <ol>
         <li>
           <strong>{{ block.settings.coll_list }}</strong>
 
@@ -23,6 +23,7 @@
             <li>{{ block.settings.coll_list_desc }}</li>
           </ul>
         </li>
+      </ol>
       {% elsif block.type == 'collection_faq' %}
         <details>
           <summary>{{ block.settings.coll_faq_q }}</summary>
@@ -31,7 +32,6 @@
         </details>
       {% endif %}
     {% endfor %}
-  </ol>
 </div>
 
 {% schema %}
