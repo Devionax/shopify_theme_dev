@@ -12,6 +12,13 @@
     "test_DMkxpc": {
       "type": "test",
       "blocks": {
+        "collection_list_piKQnb": {
+          "type": "collection-list",
+          "settings": {
+            "coll_list": "second collection",
+            "coll_list_desc": "exellent quality"
+          }
+        },
         "collection_list_Berhwb": {
           "type": "collection-list",
           "settings": {
@@ -21,6 +28,7 @@
         }
       },
       "block_order": [
+        "collection_list_piKQnb",
         "collection_list_Berhwb"
       ],
       "name": "uvi_block",
