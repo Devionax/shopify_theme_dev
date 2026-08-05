@@ -16,7 +16,14 @@ color: {{ section.settings.heading_color }}
 <div>
  <ol>
   <li>
-{{ block.setting}}
+{{ block.settings.coll_list  }}
+
+<ul>
+  <li>
+    {{ block.settings.coll_list_desc }}
+
+    </li>
+  </ul>
   </li>
   </ol>
 </div>
@@ -59,9 +66,15 @@ color: {{ section.settings.heading_color }}
       "settings": [
         {
         "type": "text",
-        "id": "coll-list",
+        "id": "coll_list",
         "label": "Collection entry"
-        }
+        },
+        {
+        "type": "text",
+        "id": "coll_list_desc",
+        "label": "Collection entry description"
+        },
+
       ]
       }
     ],
