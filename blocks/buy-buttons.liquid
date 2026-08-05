@@ -35,7 +35,11 @@
   endif
 %}
 
-
+ <ul class="brand-list">
+    {% for brand in product.metafields.custom.decoop_brand.value %}
+      <li>{{ brand }}</li>
+    {% endfor %}
+    </ul>
 <span
   class="buy-buttons-block buy-buttons-block--{{ block.id }}"
   {{ block.shopify_attributes }}
