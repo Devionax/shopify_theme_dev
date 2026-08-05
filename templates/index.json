@@ -11,12 +11,24 @@
   "sections": {
     "test_DMkxpc": {
       "type": "test",
+      "blocks": {
+        "collection_list_Berhwb": {
+          "type": "collection-list",
+          "settings": {
+            "coll_list": "first collection",
+            "coll_list_desc": "unique quality"
+          }
+        }
+      },
+      "block_order": [
+        "collection_list_Berhwb"
+      ],
       "name": "uvi_block",
       "settings": {
         "heading": "liquid section!",
         "paragraph_UVI": "Liquid section paragraph!",
         "paragraph_font": 26,
-        "heading_color": "#01012A"
+        "heading_color": "#01012a"
       }
     },
     "hero_jVaWmY": {
