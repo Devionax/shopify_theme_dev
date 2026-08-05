@@ -1,11 +1,10 @@
 <style>
-.test-p{
-  font-size: {{ section.settings.paragraph_font }}px ;
-}
-.head-color{
-color: {{ section.settings.heading_color }}
-}
-
+  .test-p{
+    font-size: {{ section.settings.paragraph_font }}px ;
+  }
+  .head-color{
+  color: {{ section.settings.heading_color }}
+  }
 </style>
 
 <div>
@@ -14,75 +13,76 @@ color: {{ section.settings.heading_color }}
 </div>
 
 <div>
- <ol>
-  <li>
-{{ block.settings.coll_list  }}
-
-<ul>
-  <li>
-    {{ block.settings.coll_list_desc }}
-
-    </li>
-  </ul>
-  </li>
+  <ol>
+    {% for block in section.blocks %}
+      
+      <li>
+        {{ block.settings.coll_list }}
+        
+        <ul>
+          <li>
+            {{ block.settings.coll_list_desc }}
+          </li>
+        </ul>
+      </li>
+    {% endfor %}
   </ol>
 </div>
 
 {% schema %}
-
-  {
-    "name": "test",
-    "settings": [
-      {
-        "type": "text",
-        "id": "heading",
-        "label": "Heading Text",
-        "default": "this is liquid section!"
-      }, {
-        "type": "text",
-        "id": "paragraph_UVI",
-        "label": "Paragraph Text",
-        "default": "Liquid section paragraph!"
-      }
-      , {
-        "type": "range",
-        "id": "paragraph_font",
-        "label": "Paragraph font",
-        "min": 10,
-        "max": 30,
-        "step": 2,
-        "default": 20
-      },{
+{
+  "name": "test",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading Text",
+      "default": "this is liquid section!"
+    },
+    {
+      "type": "text",
+      "id": "paragraph_UVI",
+      "label": "Paragraph Text",
+      "default": "Liquid section paragraph!"
+    },
+    {
+      "type": "range",
+      "id": "paragraph_font",
+      "label": "Paragraph font",
+      "min": 10,
+      "max": 30,
+      "step": 2,
+      "default": 20
+    },
+    {
       "type": "color",
       "id": "heading_color",
       "label": "set Heading color",
-      "default" : "#0000FF"
-      }
-    ],
-    "blocks": [
-      {
+      "default": "#0000FF"
+    }
+  ],
+  "blocks": [
+    {
       "type": "collection-list",
-      "name":"Collections",
+      "name": "Collections",
       "settings": [
         {
-        "type": "text",
-        "id": "coll_list",
-        "label": "Collection entry"
+          "type": "text",
+          "id": "coll_list",
+          "label": "Collection entry"
         },
         {
-        "type": "text",
-        "id": "coll_list_desc",
-        "label": "Collection entry description"
-        },
-
+          "type": "text",
+          "id": "coll_list_desc",
+          "label": "Collection entry description"
+        }
       ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "uvi_block"
-      }
-    ]
-  }
-
+    }
+  ],
+  "presets": [
+    {
+      "name": "uvi_block"
+    }
+  ]
+}
 {% endschema %}
