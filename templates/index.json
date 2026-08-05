@@ -12,24 +12,24 @@
     "test_DMkxpc": {
       "type": "test",
       "blocks": {
-        "collection_list_piKQnb": {
-          "type": "collection-list",
-          "settings": {
-            "coll_list": "second collection",
-            "coll_list_desc": "exellent quality"
-          }
-        },
         "collection_list_Berhwb": {
           "type": "collection-list",
           "settings": {
             "coll_list": "first collection",
             "coll_list_desc": "unique quality"
           }
+        },
+        "collection_list_piKQnb": {
+          "type": "collection-list",
+          "settings": {
+            "coll_list": "second collection",
+            "coll_list_desc": "exellent quality"
+          }
         }
       },
       "block_order": [
-        "collection_list_piKQnb",
-        "collection_list_Berhwb"
+        "collection_list_Berhwb",
+        "collection_list_piKQnb"
       ],
       "name": "uvi_block",
       "settings": {
