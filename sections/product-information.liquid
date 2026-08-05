@@ -115,7 +115,11 @@
       >
         {% render 'price', product_resource: product, show_sale_price_first: true %}
       </div>
-
+ <ul class="brand-list">
+    {% for brand in product.metafields.custom.decoop_brand.value %}
+      <li>{{ brand }}</li>
+    {% endfor %}
+    </ul>
       <button
         type="button"
         class="sticky-add-to-cart__button add-to-cart-button button"
