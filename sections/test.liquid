@@ -13,18 +13,17 @@
 </div>
 
 <div>
-  <ol>
-    {% for block in section.blocks %}
-      <li>
-        {{ block.settings.coll_list }}
-        <ul>
-          <li>
-            {{ block.settings.coll_list_desc }}
-          </li>
-        </ul>
-      </li>
-    {% endfor %}
-  </ol>
+ <ol>
+  {% for block in section.blocks %}
+    <li {{ block.shopify_attributes }}>
+      <strong>{{ block.settings.coll_list }}</strong>
+
+      <ul>
+        <li>{{ block.settings.coll_list_desc }}</li>
+      </ul>
+    </li>
+  {% endfor %}
+</ol>
 </div>
 
 {% schema %}
