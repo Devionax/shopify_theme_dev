@@ -12,6 +12,13 @@
     "test_DMkxpc": {
       "type": "test",
       "blocks": {
+        "collection_faq_rwmWUq": {
+          "type": "collection_faq",
+          "settings": {
+            "coll_faq_q": "is varient have ?",
+            "coll_faq_a": "yes! there are 20+ varient having in store."
+          }
+        },
         "collection_faq_6Ww9Eq": {
           "type": "collection_faq",
           "settings": {
@@ -35,6 +42,7 @@
         }
       },
       "block_order": [
+        "collection_faq_rwmWUq",
         "collection_faq_6Ww9Eq",
         "collection_list_Berhwb",
         "collection_list_piKQnb"
