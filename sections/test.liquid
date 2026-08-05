@@ -15,11 +15,12 @@
 <div>
  <ol>
   {% for block in section.blocks %}
-    <li {{ block.shopify_attributes }}>
+    <li >
       <strong>{{ block.settings.coll_list }}</strong>
 
       <ul>
         <li>{{ block.settings.coll_list_desc }}</li>
+
       </ul>
     </li>
   {% endfor %}
