@@ -1,6 +1,10 @@
 
 
 {%- assign block_settings = block.settings -%}
+{%- liquid
+assign product = closest.product
+assign brands = product.metafields.decoop.brand.value
+-%}
 <div
   id="ProductInformation-{{ section.id }}"
   class="
@@ -14,6 +18,25 @@
     data-view-transition-type="product-details"
   {% endif %}
 >
+
+{% if brands != blank %}
+  <div
+    class="product-brand"
+    {{ block.shopify_attributes }}
+  >
+    <span class="product-brand__label">
+      Brand:
+    </span>
+
+    <div class="product-brand__list">
+      {% for brand in brands %}
+        <span class="product-brand__item">
+          {{ brand }}
+        </span>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
   {% capture children %}
     <div class="view-product-title">
       <a
