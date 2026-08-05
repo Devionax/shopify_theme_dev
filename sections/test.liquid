@@ -15,7 +15,7 @@
 <div>
   <ol>
     {% for block in section.blocks %}
-    {% if  block.type == "collection-lis" %}
+    {% if  block.type == "collection-list" %}
     <li >
       <strong>{{ block.settings.coll_list }}</strong>
 
@@ -78,6 +78,20 @@
           "label": "Collection entry description"
         }
       ]
+    },
+    {
+    "type": "collection_faq",
+    "name": "Collection FAQ",
+    "settings": [
+      {"type": "text",
+        "id": "coll_faq_q",
+        "label": "Question's FAQ"
+      },
+      {"type": "text",
+        "id": "coll_faq_a",
+        "label": "Answer's FAQ"
+      },
+    ]
     }
   ],
   "presets": [
