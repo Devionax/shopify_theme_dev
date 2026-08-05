@@ -2,11 +2,14 @@
 .test-p{
   font-size: {{ section.settings.paragraph_font }}px ;
 }
+.head-color{
+color: {{ section.settings.heading_color }}
+}
 
 </style>
 
 <div>
-  <h1 class="test-p">{{ section.settings.heading }}</h1>
+  <h1 class="test-p head-color">{{ section.settings.heading }}</h1>
   <p class="test-p">{{ section.settings.paragraph_UVI }}</p>
 </div>
 
@@ -34,6 +37,10 @@
         "max": 30,
         "step": 2,
         "default": 20
+      },{
+      "type": "color",
+      "id": "heading_color",
+      "label": "set Heading color"
       }
     ],
     "blocks": [],
