@@ -12,6 +12,13 @@
     "test_DMkxpc": {
       "type": "test",
       "blocks": {
+        "collection_faq_6Ww9Eq": {
+          "type": "collection_faq",
+          "settings": {
+            "coll_faq_q": "how many collection in store?",
+            "coll_faq_a": "15 more then Pro have"
+          }
+        },
         "collection_list_Berhwb": {
           "type": "collection-list",
           "settings": {
@@ -28,6 +35,7 @@
         }
       },
       "block_order": [
+        "collection_faq_6Ww9Eq",
         "collection_list_Berhwb",
         "collection_list_piKQnb"
       ],
