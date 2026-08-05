@@ -29,6 +29,11 @@
       </a>
     </div>
     {% content_for 'blocks' %}
+    <ul class="brand-list">
+  {% for brand in product.metafields.custom.decoop_brand.value %}
+    <li>{{ brand }}</li>
+  {% endfor %}
+</ul>
   {% endcapture %}
 
   {% render 'group', children: children, settings: block_settings, shopify_attributes: block.shopify_attributes %}
