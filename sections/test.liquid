@@ -13,6 +13,14 @@ color: {{ section.settings.heading_color }}
   <p class="test-p">{{ section.settings.paragraph_UVI }}</p>
 </div>
 
+<div>
+ <ol>
+  <li>
+{{  }}
+  </li>
+  </ol>
+</div>
+
 {% schema %}
 
   {
@@ -27,7 +35,7 @@ color: {{ section.settings.heading_color }}
         "type": "text",
         "id": "paragraph_UVI",
         "label": "Paragraph Text",
-        "default": "<p>Liquid section paragraph!</p>"
+        "default": "Liquid section paragraph!"
       }
       , {
         "type": "range",
@@ -44,7 +52,19 @@ color: {{ section.settings.heading_color }}
       "default" : "#0000FF"
       }
     ],
-    "blocks": [],
+    "blocks": [
+      {
+      "type": "collection-list",
+      "name":"Collections",
+      "settings": [
+        {
+        "type": "text",
+        "id": "coll-list",
+        "label": "Collection entry"
+        }
+      ]
+      }
+    ],
     "presets": [
       {
         "name": "uvi_block"
