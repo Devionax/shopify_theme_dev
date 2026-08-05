@@ -15,7 +15,8 @@
       "settings": {
         "heading": "liquid section!",
         "paragraph_UVI": "Liquid section paragraph!",
-        "paragraph_font": 26
+        "paragraph_font": 26,
+        "heading_color": "#01012A"
       }
     },
     "hero_jVaWmY": {
