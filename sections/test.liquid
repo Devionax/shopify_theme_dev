@@ -13,6 +13,7 @@
 </div>
 
 <div>
+  {% if  section.blocks.type == "collection-list" %}
  <ol>
   {% for block in section.blocks %}
     <li >
@@ -20,11 +21,11 @@
 
       <ul>
         <li>{{ block.settings.coll_list_desc }}</li>
-
       </ul>
     </li>
   {% endfor %}
 </ol>
+{% endif %}
 </div>
 
 {% schema %}
@@ -64,7 +65,7 @@
   "blocks": [
     {
       "type": "collection-list",
-      "name": "block",
+      "name": "collection block",
       "settings": [
         {
           "type": "text",
