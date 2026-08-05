@@ -15,17 +15,23 @@
 <div>
   <ol>
     {% for block in section.blocks %}
-    {% if  block.type == "collection-list" %}
-    <li >
-      <strong>{{ block.settings.coll_list }}</strong>
+      {% if block.type == 'collection-list' %}
+        <li>
+          <strong>{{ block.settings.coll_list }}</strong>
 
-      <ul>
-        <li>{{ block.settings.coll_list_desc }}</li>
-      </ul>
-    </li>
-  {% endif %}
-  {% endfor %}
-</ol>
+          <ul>
+            <li>{{ block.settings.coll_list_desc }}</li>
+          </ul>
+        </li>
+      {% elsif block.type == 'collection_faq' %}
+        <details>
+          <summary>{{ block.settings.coll_faq_q }}</summary>
+
+          <p>{{ block.settings.coll_faq_a }}.</p>
+        </details>
+      {% endif %}
+    {% endfor %}
+  </ol>
 </div>
 
 {% schema %}
@@ -80,18 +86,12 @@
       ]
     },
     {
-    "type": "collection_faq",
-    "name": "Collection FAQ",
-    "settings": [
-      {"type": "text",
-        "id": "coll_faq_q",
-        "label": "Question's FAQ"
-      },
-      {"type": "text",
-        "id": "coll_faq_a",
-        "label": "Answer's FAQ"
-      },
-    ]
+      "type": "collection_faq",
+      "name": "Collection FAQ",
+      "settings": [
+        { "type": "text", "id": "coll_faq_q", "label": "Question's FAQ" },
+        { "type": "text", "id": "coll_faq_a", "label": "Answer's FAQ" }
+      ]
     }
   ],
   "presets": [
