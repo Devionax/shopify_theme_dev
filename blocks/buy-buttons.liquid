@@ -50,6 +50,13 @@ console.log({{ product.metafields.custom.decoop_detail.value | json }});
     </ul>
     {% assign deal = product.metafields.custom.decoop_detail.value %}
 
+    <script>
+          console.log({{ deal.discount_on_amount | json }})
+          console.log({{ deal.discount_on_amount.value }})
+          console.log({{ deal.discount_on_amount.size }})
+          console.log({{ deal.discount_on_amount.count }})
+        </script>
+
 {% if deal %}
   <div class="decoop-card">
     <div class="decoop-header">
@@ -69,12 +76,6 @@ console.log({{ product.metafields.custom.decoop_detail.value | json }});
     {% if deal.discount_on_amount %}
       <div class="decoop-discounts">
         <strong>🎉 Available Discounts</strong>
-        <script>
-          console.log({{ deal.discount_on_amount | json }})
-          console.log({{ deal.discount_on_amount.value }})
-          console.log({{ deal.discount_on_amount.size }})
-          console.log({{ deal.discount_on_amount.count }})
-        </script>
 
         <ul>
           {% for discount in deal.discount_on_amount %}
