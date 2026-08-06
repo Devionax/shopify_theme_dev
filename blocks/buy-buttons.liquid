@@ -51,9 +51,7 @@ console.log({{ product.metafields.custom.decoop_detail.value | json }});
     {% assign deal = product.metafields.custom.decoop_detail.value %}
 
     <script>
-          console.log({{ deal.discount_on_amount | json }})
-          console.log({{ deal.discount_on_amount.size }})
-          console.log({{ deal.discount_on_amount.count }})
+        console.log({{ product.metafields.custom.decoop_detail.value | json }});
         </script>
 
 {% if deal %}
