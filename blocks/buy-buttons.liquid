@@ -35,15 +35,18 @@
   endif
 %}
 
+{% assign brand = product.metafields.custom.decoop_detail.value %}
+
+<script>
+  console.log({{ brand | json }});
+</script>
+
  <ul class="brand-list">
     {% for brand in product.metafields.custom.decoop_brand.value %}
       <li>{{ brand }}</li>
     {% endfor %}
     </ul>
 
-    <script>
-console.log({{ product.metafields.custom.decoop_detail.value | json }})
-      </script>
 <span
   class="buy-buttons-block buy-buttons-block--{{ block.id }}"
   {{ block.shopify_attributes }}
