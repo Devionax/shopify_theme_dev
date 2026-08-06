@@ -42,11 +42,7 @@
       <li>{{ brand }}</li>
     {% endfor %}
     </ul>
-    <ul>
-          {% for discount in product.metafields.custom.decoop_detail.discount_on_amount %}
-            <li>{{ discount }}</li>
-          {% endfor %}
-        </ul>
+    
     {% assign deal = product.metafields.custom.decoop_detail.value %}
 
     <script>
