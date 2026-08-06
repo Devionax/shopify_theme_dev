@@ -69,6 +69,10 @@ console.log({{ product.metafields.custom.decoop_detail.value | json }});
     {% if deal.discount_on_amount %}
       <div class="decoop-discounts">
         <strong>🎉 Available Discounts</strong>
+        <script>
+          console.log({{ deal.discount_on_amount }})
+          console.log({{ deal.discount_on_amount.value }})
+        </script>
 
         <ul>
           {% for discount in deal.discount_on_amount %}
