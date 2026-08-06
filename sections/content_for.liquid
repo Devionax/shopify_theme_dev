@@ -1,4 +1,20 @@
-<div class="content_for" >
-{% content_for 'blocks' %}
-
+<div class="content_for">
+  {% content_for 'blocks' %}
 </div>
+
+{% schema %}
+{
+  "name": "content_for",
+  "class": "div",
+  "blocks": [
+    {
+      "type": "@theme"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Content_For"
+    }
+  ]
+}
+{% endschema %}
