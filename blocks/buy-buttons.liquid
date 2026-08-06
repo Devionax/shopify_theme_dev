@@ -40,31 +40,35 @@
   {% endfor %}
 </ul>
 
-<div class="decoop-card">
-  <h3>Special Offers</h3>
+{% assign deal = product.metafields.custom.decoop_detail.value %}
 
-  <p><strong>📍 Location:</strong> <span id="location"></span></p>
+{% if deal %}
+  <div class="decoop-card" id="decoop-card">
+    <h3>Special Offers</h3>
 
-  <p><strong>💰 Average Market Price:</strong> $<span id="price"></span></p>
+    <p><strong>📍 Location:</strong> <span id="location"></span></p>
 
-  <strong>🎉 Available Discounts</strong>
-  <ul id="discount-list"></ul>
-</div>
+    <p><strong>💰 Average Market Price:</strong> $<span id="price"></span></p>
 
-<script>
-  const deal = {{ product.metafields.custom.decoop_detail.value | json }};
+    <strong>🎉 Available Discounts</strong>
+    <ul id="discount-list"></ul>
+  </div>
 
-  document.getElementById("location").textContent = deal.location;
-  document.getElementById("price").textContent = deal.avg_market_price;
+  <script>
+    const deal = {{ deal | json }};
 
-  const list = document.getElementById("discount-list");
+    document.getElementById("location").textContent = deal.location;
+    document.getElementById("price").textContent = deal.avg_market_price;
 
-  deal.discount_on_amount.forEach(discount => {
-    const li = document.createElement("li");
-    li.textContent = discount;
-    list.appendChild(li);
-  });
-</script>
+    const list = document.getElementById("discount-list");
+
+    deal.discount_on_amount.forEach(discount => {
+      const li = document.createElement("li");
+      li.textContent = discount;
+      list.appendChild(li);
+    });
+  </script>
+{% endif %}
 
 <span
   class="buy-buttons-block buy-buttons-block--{{ block.id }}"
