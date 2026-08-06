@@ -41,14 +41,7 @@
 console.log({{ product.title | json }});
 </script>
 
-<pre>
-  Metafield exists:
-{% if product.metafields.custom.decoop_detail %}
-  YES
-{% else %}
-  NO
-{% endif %}
-</pre>
+
  <ul class="brand-list">
     {% for brand in product.metafields.custom.decoop_brand.value %}
       <li>{{ brand }}</li>
