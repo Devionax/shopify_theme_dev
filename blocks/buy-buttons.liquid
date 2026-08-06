@@ -48,6 +48,37 @@ console.log({{ product.metafields.custom.decoop_detail.value | json }});
       <li>{{ brand }}</li>
     {% endfor %}
     </ul>
+    {% assign deal = product.metafields.custom.decoop_detail.value %}
+
+{% if deal %}
+  <div class="decoop-card">
+    <div class="decoop-header">
+      <h3>Special Offers</h3>
+    </div>
+
+    <div class="decoop-item">
+      <strong>📍 Location:</strong>
+      <span>{{ deal.location }}</span>
+    </div>
+
+    <div class="decoop-item">
+      <strong>💰 Average Market Price:</strong>
+      <span>${{ deal.avg_market_price }}</span>
+    </div>
+
+    {% if deal.discount_on_amount %}
+      <div class="decoop-discounts">
+        <strong>🎉 Available Discounts</strong>
+
+        <ul>
+          {% for discount in deal.discount_on_amount %}
+            <li>{{ discount }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </div>
+{% endif %}
 
 <span
   class="buy-buttons-block buy-buttons-block--{{ block.id }}"
