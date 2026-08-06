@@ -42,6 +42,11 @@
       <li>{{ brand }}</li>
     {% endfor %}
     </ul>
+    <ul>
+          {% for discount in product.metafields.custom.decoop_detail.discount_on_amount %}
+            <li>{{ discount }}</li>
+          {% endfor %}
+        </ul>
     {% assign deal = product.metafields.custom.decoop_detail.value %}
 
     <script>
@@ -70,7 +75,7 @@
         <strong>🎉 Available Discounts</strong>
 
         <ul>
-          {% for discount in deal.discount_on_amount %}
+          {% for discount in product.metafields.custom.decoop_detail.discount_on_amount %}
             <li>{{ discount }}</li>
           {% endfor %}
         </ul>
