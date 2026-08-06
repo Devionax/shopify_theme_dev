@@ -41,7 +41,7 @@
 console.log({{ product.title | json }});
 </script>
 
-<p>Product: {{ product.title }}</p>
+<pre>{{ product.metafields | json }}</pre>
  <ul class="brand-list">
     {% for brand in product.metafields.custom.decoop_brand.value %}
       <li>{{ brand }}</li>
