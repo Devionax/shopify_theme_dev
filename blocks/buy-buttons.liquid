@@ -37,7 +37,9 @@
 
 {% assign brand = product.metafields.custom.decoop_detail.value %}
 
-
+<script>
+console.log({{ product.title | json }});
+</script>
 
  <ul class="brand-list">
     {% for brand in product.metafields.custom.decoop_brand.value %}
