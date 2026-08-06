@@ -43,6 +43,17 @@
 {% assign deal = product.metafields.custom.decoop_detail.value %}
 
 {% if deal %}
+
+  {% if deal.store_face %}
+      {{
+        deal.store_face
+        | image_url: width: 100
+        | image_tag:
+          alt: deal.location,
+          class: 'decoop-image',
+          loading: 'lazy'
+      }}
+    {% endif %}
   <div class="decoop-card" id="decoop-card">
     <h3>Special Offers</h3>
 
