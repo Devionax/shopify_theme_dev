@@ -2,10 +2,12 @@
 
 {%- assign block_settings = block.settings -%}
 
-{% comment %} <script>
+<script>
   console.log({{ block.settings | json }});
   console.log({{ product.metafields.custom.decoop_brand.value | json }});
-</script> {% endcomment %}
+</script>
+
+
 <div
   id="ProductInformation-{{ section.id }}"
   class="
