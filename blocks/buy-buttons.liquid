@@ -67,7 +67,7 @@
 
   <script>
     const deal = {{ deal | json }};
-    console.log(deal)
+    {% comment %} console.log(deal) {% endcomment %}
 
     document.getElementById("location").textContent = deal.location;
     document.getElementById("price").textContent = deal.avg_market_price;
