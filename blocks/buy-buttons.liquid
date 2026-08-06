@@ -40,6 +40,10 @@
       <li>{{ brand }}</li>
     {% endfor %}
     </ul>
+
+    <script>
+console.log({{ product.metafields.custom.decoop_detail.value }})
+      </script>
 <span
   class="buy-buttons-block buy-buttons-block--{{ block.id }}"
   {{ block.shopify_attributes }}
