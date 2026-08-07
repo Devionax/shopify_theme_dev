@@ -410,10 +410,16 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "product_metaobject_QMaMrf": {
+      "type": "product_metaobject",
+      "name": "product_pro_desc",
+      "settings": {}
     }
   },
   "order": [
     "main",
-    "product_recommendations_qggXJq"
+    "product_recommendations_qggXJq",
+    "product_metaobject_QMaMrf"
   ]
 }
