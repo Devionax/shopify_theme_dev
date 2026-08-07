@@ -108,7 +108,7 @@
             "text_c9jHzg": {
               "type": "text",
               "settings": {
-                "text": "<p>OverAll Market Price:  ${{ closest.metaobject.brands.avg_market_price.value }} </p>{{ closest.metaobject.brands.discount_on_amount | metafield_tag }}",
+                "text": "<p>OverAll Market Price: <strong> ${{ closest.metaobject.brands.avg_market_price.value }} </strong> </p>{{ closest.metaobject.brands.discount_on_amount | metafield_tag }}",
                 "width": "fit-content",
                 "max_width": "narrow",
                 "alignment": "left",
