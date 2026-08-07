@@ -1,12 +1,19 @@
 {% assign deal = product.metafields.custom.decoop_detail.value %}
 
+{% stylesheet %}
+  .decoop-image{
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+  }
+{% endstylesheet %}
+
 {% if deal %}
 
    {% if deal.store_face %}
       {{
         deal.store_face
         | image_url: width: 100
-        |image_url : height:100
         | image_tag:
           alt: deal.location,
           class: 'decoop-image',
