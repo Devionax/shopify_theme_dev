@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% assign deal = product.metafields.custom.decoop_detail.value %}
 
 {% stylesheet %}
@@ -63,4 +64,71 @@
 ]
 }
 
+=======
+{% assign deal = product.metafields.custom.decoop_detail.value %}
+
+{% stylesheet %}
+  .decoop-image{
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+  }
+{% endstylesheet %}
+
+{% if deal %}
+
+   {% if deal.store_face %}
+      {{
+        deal.store_face
+        | image_url: width: 100
+        | image_tag:
+          alt: deal.location,
+          class: 'decoop-image',
+          loading: 'lazy'
+      }}
+    {% endif %} 
+  <div class="decoop-card" id="decoop-card">
+    <h3>Special Offers</h3>
+
+    <p><strong>📍 Location:</strong> <span id="location"></span></p>
+
+    <p><strong>💰 Average Market Price:</strong> $<span id="price"></span></p>
+
+    <strong>🎉 Available Discounts</strong>
+    <ul id="discount-list"></ul>
+  </div>
+
+  <script>
+    const deal = {{ deal | json }};
+    {% comment %} console.log(deal) {% endcomment %}
+
+    document.getElementById("location").textContent = deal.location;
+    document.getElementById("price").textContent = deal.avg_market_price;
+
+    const list = document.getElementById("discount-list");
+
+    deal.discount_on_amount.forEach(discount => {
+      const li = document.createElement("li");
+      li.textContent = discount;
+      list.appendChild(li);
+    });
+  </script>
+{% endif %}
+
+
+{%  schema %}
+
+{
+"name": "more_detail",
+"class": "div",
+"settings": [],
+"blocks": [],
+"presets": [
+    {
+    "name": "product_pro_desc"
+    }
+]
+}
+
+>>>>>>> 97adb7e040e3b5eaae6d678bb0aa3f4b3bd3855f
 {% endschema %}
