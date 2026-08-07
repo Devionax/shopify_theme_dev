@@ -40,7 +40,7 @@
   {% endfor %}
 </ul>
 
-{% assign deal = product.metafields.custom.decoop_detail.value %}
+{% comment %} {% assign deal = product.metafields.custom.decoop_detail.value %}
 
 {% if deal %}
 
@@ -80,7 +80,7 @@
       list.appendChild(li);
     });
   </script>
-{% endif %}
+{% endif %} {% endcomment %}
 
 <span
   class="buy-buttons-block buy-buttons-block--{{ block.id }}"
