@@ -2,7 +2,7 @@
 
 {% if deal %}
 
-  {% comment %} {% if deal.store_face %}
+   {% if deal.store_face %}
       {{
         deal.store_face
         | image_url: width: 100
@@ -11,7 +11,7 @@
           class: 'decoop-image',
           loading: 'lazy'
       }}
-    {% endif %} {% endcomment %}
+    {% endif %} 
   <div class="decoop-card" id="decoop-card">
     <h3>Special Offers</h3>
 
