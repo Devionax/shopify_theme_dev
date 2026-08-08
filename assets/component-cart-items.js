@@ -56,11 +56,13 @@ class CartItemsComponent extends Component {
     if (!(event.target instanceof Node) || !this.contains(event.target)) return;
 
     const { quantity, cartLine: line } = event.detail;
+    alert(quantity)
 
     // Cart items require a line number
     if (!line) return;
 
     if (quantity === 0) {
+
       return this.onLineItemRemove(line);
     }
 
