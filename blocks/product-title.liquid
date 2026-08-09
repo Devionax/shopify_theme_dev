@@ -22,17 +22,12 @@
 {% endif %}
 
 <script>
-const button = document.querySelector('.direct_addtocart_btn');
+const directAddToCartButton = document.querySelector('.direct_addtocart_btn');
 
-button.addEventListener('click', async (event) => {
+directAddToCartButton?.addEventListener('click', async (event) => {
   event.preventDefault();
 
-  const variantUrl = button.dataset.variantUrl;
-
-  const variantId = new URL(
-    variantUrl,
-    window.location.origin
-  ).searchParams.get('variant');
+  const variantId = directAddToCartButton.dataset.variantId;
 
   console.log('Variant ID:', variantId);
 
@@ -59,12 +54,12 @@ button.addEventListener('click', async (event) => {
     });
 
     if (!response.ok) {
-      throw new Error('Failed to add product');
+      throw new Error(`Cart request failed: ${response.status}`);
     }
 
-    const item = await response.json();
+    const data = await response.json();
 
-    console.log('Added to cart:', item);
+    console.log('Added to cart:', data);
 
   } catch (error) {
     console.error('Add to cart error:', error);
