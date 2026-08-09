@@ -36,7 +36,7 @@
       {%- render 'theme-editor' -%}
     {% endif %}
 
-    {{ 'direct-add-to-cart.js' | asset_url | script_tag }}
+    {{ 'direct-add-to-cart.js' | asset_url }}
     {{ content_for_header }}
     {% # theme-check-enable RemoteAsset %}
   </head>
