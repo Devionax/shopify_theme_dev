@@ -17,6 +17,8 @@
   <p class="test-p">{{ section.settings.paragraph_UVI }}</p>
 </div>
 
+<my-cart-button></my-cart-button>
+
 <div>
   {% for block in section.blocks %}
     {% if block.type == 'collection-list' %}
@@ -108,3 +110,30 @@
   ]
 }
 {% endschema %}
+
+
+
+<script> 
+  class MyCartButton extends HTMLElement {
+
+  connectedCallback() {
+
+    this.innerHTML = `
+      <button>
+        Add to cart
+      </button>
+    `;
+
+    this.querySelector('button').addEventListener('click', () => {
+      console.log('Button clicked');
+    });
+
+  }
+
+}
+
+customElements.define(
+  'my-cart-button',
+  MyCartButton
+);
+</script>
