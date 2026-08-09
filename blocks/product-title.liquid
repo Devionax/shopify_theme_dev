@@ -22,49 +22,53 @@
 {% endif %}
 
 <script>
-const directAddToCartButton = document.querySelector('.direct_addtocart_btn');
+(() => {
+  const buttons = document.querySelectorAll('.direct_addtocart_btn');
 
-directAddToCartButton?.addEventListener('click', async (event) => {
-  event.preventDefault();
+  buttons.forEach((button) => {
+    button.addEventListener('click', async (event) => {
+      event.preventDefault();
 
-  const variantId = directAddToCartButton.dataset.variantId;
+      const variantId = button.dataset.variantId;
 
-  console.log('Variant ID:', variantId);
+      console.log('Variant ID:', variantId);
 
-  if (!variantId) {
-    console.error('Variant ID not found');
-    return;
-  }
+      if (!variantId) {
+        console.error('Variant ID not found');
+        return;
+      }
 
-  try {
-    const response = await fetch('/cart/add.js', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        items: [
-          {
-            id: Number(variantId),
-            quantity: 1
-          }
-        ]
-      })
+      try {
+        const response = await fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            items: [
+              {
+                id: Number(variantId),
+                quantity: 1
+              }
+            ]
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error(`Cart request failed: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        console.log('Added to cart:', data);
+
+      } catch (error) {
+        console.error('Add to cart error:', error);
+      }
     });
-
-    if (!response.ok) {
-      throw new Error(`Cart request failed: ${response.status}`);
-    }
-
-    const data = await response.json();
-
-    console.log('Added to cart:', data);
-
-  } catch (error) {
-    console.error('Add to cart error:', error);
-  }
-});
+  });
+})();
 
 </script>
 {% schema %}
