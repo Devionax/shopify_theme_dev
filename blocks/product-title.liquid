@@ -6,7 +6,12 @@
   {% render 'text', fallback_text: product_title, block: block %}
 {% else %}
   {% assign product_title = '<p role="heading" aria-level="3">' | append: closest.product.title | append: '</p>' %}
-    <button class="direct_addtocart_btn"> add to cart </button>
+   <button
+  class="direct_addtocart_btn"
+  data-variant-url="{{ closest.product.selected_or_first_available_variant.url }}"
+>
+  Add to cart
+</button>
   <a
     class="contents user-select-text"
     ref="productTitleLink"
@@ -17,15 +22,19 @@
 {% endif %}
 
 <script>
-  const button = document.querySelector('.direct_addtocart_btn');
+const button = document.querySelector('.direct_addtocart_btn');
 
 button.addEventListener('click', async (event) => {
   event.preventDefault();
 
-  const link = event.currentTarget.closest('a');
-  if (!link) return;
+  const variantUrl = button.dataset.variantUrl;
 
-  const variantId = new URL(link.href).searchParams.get('variant');
+  const variantId = new URL(
+    variantUrl,
+    window.location.origin
+  ).searchParams.get('variant');
+
+  console.log('Variant ID:', variantId);
 
   if (!variantId) {
     console.error('Variant ID not found');
@@ -61,6 +70,7 @@ button.addEventListener('click', async (event) => {
     console.error('Add to cart error:', error);
   }
 });
+
 </script>
 {% schema %}
 {
