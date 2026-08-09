@@ -6,7 +6,7 @@
   {% render 'text', fallback_text: product_title, block: block %}
 {% else %}
   {% assign product_title = '<p role="heading" aria-level="3">' | append: closest.product.title | append: '</p>' %}
-    butt
+    <button class="direct_addtocart_btn"> add to cart </button>
   <a
     class="contents user-select-text"
     ref="productTitleLink"
@@ -16,6 +16,52 @@
   </a>
 {% endif %}
 
+<script>
+  const button = document.querySelector('.direct_addtocart_btn');
+
+button.addEventListener('click', async (event) => {
+  event.preventDefault();
+
+  const link = event.currentTarget.closest('a');
+  if (!link) return;
+
+  const variantId = new URL(link.href).searchParams.get('variant');
+
+  if (!variantId) {
+    console.error('Variant ID not found');
+    return;
+  }
+
+  try {
+    const response = await fetch('/cart/add.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        items: [
+          {
+            id: Number(variantId),
+            quantity: 1
+          }
+        ]
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to add product');
+    }
+
+    const item = await response.json();
+
+    console.log('Added to cart:', item);
+
+  } catch (error) {
+    console.error('Add to cart error:', error);
+  }
+});
+</script>
 {% schema %}
 {
   "name": "t:names.product_title",
