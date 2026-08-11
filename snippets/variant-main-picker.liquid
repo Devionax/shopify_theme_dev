@@ -18,6 +18,14 @@
       assign strikethrough_color_mix = '#fff'
     endif
   %}
+
+  {% if product.variants.size > 1 %}
+  <script>
+    console.log("Product has variants:");
+    console.log({{ product.variants | json }});
+  </script>
+{% endif %}
+
   <variant-picker
     class="variant-picker spacing-style variant-picker--{{ block_settings.alignment }}"
     style="--color-strikethrough-mix: {{ strikethrough_color_mix }}; {% render 'spacing-style', settings: block_settings %}"
