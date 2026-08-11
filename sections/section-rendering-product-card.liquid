@@ -44,12 +44,7 @@
     href="{{ url }}"
     ref="productCardLink"
   >
-    <variant-picker>
-      <script type="application/json">
-        {{ product.selected_or_first_available_variant | json }}
-      </script>
-    </variant-picker>
-    {% render 'variant-swatches', product_resource: product, has_option_selected: true %}
+   
 
     <product-price>
       {% render 'price', product_resource: product, show_unit_price: true %}
