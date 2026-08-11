@@ -19,12 +19,22 @@
     endif
   %}
 
-  {% if product.variants.size > 1 %}
-  <script>
-    console.log("Product has variants:");
-    console.log({{ product.variants | json }});
-  </script>
-{% endif %}
+ <div class="variants-container"></div>
+
+<script>
+  const variants = {{ product.variants | json }};
+
+  const container = document.querySelector('.variants-container');
+
+  variants.forEach((variant) => {
+    const button = document.createElement('button');
+
+    button.textContent = variant.title;
+    button.dataset.variantId = variant.id;
+
+    container.appendChild(button);
+  });
+</script>
 
   <variant-picker
     class="variant-picker spacing-style variant-picker--{{ block_settings.alignment }}"
