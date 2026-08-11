@@ -28,6 +28,9 @@
 
   variants.forEach((variant) => {
     const button = document.createElement('button');
+    button.addEventListener("click", ()=>{
+    console.log("clicked!")
+    })
 
     button.textContent = variant.title;
     button.dataset.variantId = variant.id;
