@@ -46,7 +46,13 @@
       {%- render 'theme-editor' -%}
     {% endif %}
 
-
+{% if settings.enable_body_background %}
+  <style>
+    body {
+      background-color: {{ settings.body_background_color }};
+    }
+  </style>
+{% endif %}
     
    <script
   src="{{ 'direct-add-to-cart.js' | asset_url }}"
