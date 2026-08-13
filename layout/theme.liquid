@@ -1,18 +1,8 @@
 <script>
-  console.log("Path:", {{ request.path | json }});
-  console.log("Page type:", {{ request.page_type | json }});
-  console.log("Design mode:", {{ request.design_mode | json }});
-  console.log("Locale:", {{ request.locale.iso_code | json }});
-
-    console.log(
-    "Country:",
-    {{ localization.country.iso_code | json }}
-  );
-
-  console.log(
-    "Language:",
-    {{ localization.language.iso_code | json }}
-  );
+  console.log("Country:", {{ localization.country.iso_code | json }});
+  console.log("Country name:", {{ localization.country.name | json }});
+  console.log("Language:", {{ localization.language.iso_code | json }});
+  console.log("URL:", {{ request.path | json }});
 </script>
 
 
