@@ -1,6 +1,15 @@
 <script>
-console.log("request "+  {{ request.locale.iso_code }})
+  console.log("Path:", {{ request.path | json }});
+  console.log("Page type:", {{ request.page_type | json }});
+  console.log("Design mode:", {{ request.design_mode | json }});
+  console.log("Locale:", {{ request.locale.iso_code | json }});
+
+  console.log("request:", {{ request | json }});
+
 </script>
+
+
+
 
 <!doctype html>
 <html
