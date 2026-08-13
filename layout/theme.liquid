@@ -4,7 +4,8 @@
   console.log("Design mode:", {{ request.design_mode | json }});
   console.log("Locale:", {{ request.locale.iso_code | json }});
 
-  console.log("request:", {{ request | json }});
+  console.log("language:", {{ localization.language }});
+  console.log("country:", {{ localization.country }});
 
 </script>
 
