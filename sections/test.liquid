@@ -19,7 +19,7 @@
 
 <my-cart-button></my-cart-button>
 
-<div>
+{% comment %} <div>
   {% for block in section.blocks %}
     {% if block.type == 'collection-list' %}
         <ol>
@@ -41,7 +41,7 @@
       </div>
       {% endif %}
     {% endfor %}
-</div>
+</div> {% endcomment %}
 
 {% schema %}
 {
@@ -79,43 +79,17 @@
   ],
   "blocks": [
     {
-      "type": "collection-list",
-      "name": "collection block",
-      "settings": [
-        {
-          "type": "text",
-          "id": "coll_list",
-          "label": "Collection entry"
-        },
-        {
-          "type": "text",
-          "id": "coll_list_desc",
-          "label": "Collection entry description"
-        }
-      ]
+      "type": "_collection-list"
     },
     {
-      "type": "collection_faq",
-      "name": "Collection FAQ",
-      "settings": [
-        { "type": "text", "id": "coll_faq_q", "label": "Question's FAQ" },
-        { "type": "text", "id": "coll_faq_a", "label": "Answer's FAQ" }
-      ]
+      "type": "_collection-faq"
     }
   ],
- "presets": [
-  {
-    "name": "uvi_block",
-    "blocks": [
-      {
-        "type": "collection-list"
-      },
-      {
-        "type": "collection_faq"
-      }
-    ]
-  }
-]
+  "presets": [
+    {
+      "name": "uvi_block"
+    }
+  ]
 }
 {% endschema %}
 
