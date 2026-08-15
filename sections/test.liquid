@@ -19,29 +19,6 @@
 
 <my-cart-button></my-cart-button>
 
-{% comment %} <div>
-  {% for block in section.blocks %}
-    {% if block.type == 'collection-list' %}
-        <ol>
-        <li>
-          <strong>{{ block.settings.coll_list }}</strong>
-
-          <ul>
-            <li>{{ block.settings.coll_list_desc }}</li>
-          </ul>
-        </li>
-      </ol>
-      {% elsif block.type == 'collection_faq' %}
-        <div class="faq_coll">
-        <details>
-          <summary>{{ block.settings.coll_faq_q }}</summary>
-
-          <p>{{ block.settings.coll_faq_a }}.</p>
-        </details>
-      </div>
-      {% endif %}
-    {% endfor %}
-</div> {% endcomment %}
 
 <div>
   {% content_for 'blocks' %}
