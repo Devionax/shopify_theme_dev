@@ -45,13 +45,12 @@
         "collection_list_33hbBL",
         "collection_faq_6B8VNP"
       ],
-      "disabled": true,
       "name": "uvi_block",
       "settings": {
         "heading": "this is liquid section!",
         "paragraph_UVI": "Liquid section paragraph!",
         "paragraph_font": 20,
-        "heading_color": "#0000FF"
+        "heading_color": "#0000ff"
       }
     },
     "hero_jVaWmY": {
