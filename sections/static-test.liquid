@@ -1,0 +1,57 @@
+<style>
+  .static-test {
+    padding: 40px;
+    text-align: center;
+  }
+
+  .static-test h1 {
+    margin-bottom: 20px;
+  }
+</style>
+
+<section class="static-test">
+
+  <h1>
+    {{ section.settings.heading }}
+  </h1>
+
+  <p>
+    {{ section.settings.description }}
+  </p>
+
+  <div class="static-test__message">
+
+    {% content_for "block",
+      type: "_static-message",
+      id: "static-message"
+    %}
+
+  </div>
+
+</section>
+
+{% schema %}
+{
+  "name": "Static Test",
+
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "My Static Section"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "This section contains a statically rendered block."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Static Test"
+    }
+  ]
+}
+{% endschema %}
