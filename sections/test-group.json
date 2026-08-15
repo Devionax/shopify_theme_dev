@@ -8,8 +8,20 @@
  * ------------------------------------------------------------
  */
 {
-  "name": "test-group",
-  "type": "header",
-  "sections": {},
-  "order": []
+  "type": "custom.test",
+  "name": "Test Group",
+  "sections": {
+    "test": {
+      "type": "test",
+      "settings": {}
+    },
+    "static_test": {
+      "type": "static-test",
+      "settings": {}
+    }
+  },
+  "order": [
+    "test",
+    "static_test"
+  ]
 }
