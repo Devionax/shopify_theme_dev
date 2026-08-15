@@ -3,6 +3,7 @@
   console.log("Country name:", {{ localization.country.name | json }});
   console.log("Language:", {{ localization.language.iso_code | json }});
   console.log("URL:", {{ request.path | json }});
+  console.log({{template | json }})
 </script>
 
 
@@ -138,7 +139,6 @@
     </script>
  {% comment %} <h1>{{ request.design_mode }} </h1> {% endcomment %}
   {%  unless template == "page.contact" %}
-    
     {% sections 'test-group' %}
   {% endunless %}
     <main
