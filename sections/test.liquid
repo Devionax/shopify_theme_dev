@@ -43,6 +43,10 @@
     {% endfor %}
 </div> {% endcomment %}
 
+<div>
+  {% content_for 'blocks' %}
+</div>
+
 {% schema %}
 {
   "name": "test",
