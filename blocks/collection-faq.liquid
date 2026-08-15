@@ -1,0 +1,29 @@
+<div class="faq_coll" {{ block.shopify_attributes }}>
+  <details>
+    <summary>
+      {{ block.settings.coll_faq_q }}
+    </summary>
+
+    <p>
+      {{ block.settings.coll_faq_a }}
+    </p>
+  </details>
+</div>
+
+{% schema %}
+{
+  "name": "Collection FAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "coll_faq_q",
+      "label": "Question"
+    },
+    {
+      "type": "text",
+      "id": "coll_faq_a",
+      "label": "Answer"
+    }
+  ]
+}
+{% endschema %}
