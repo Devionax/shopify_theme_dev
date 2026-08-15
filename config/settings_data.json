@@ -81,6 +81,35 @@
     "variant_button_border_width": 1,
     "variant_button_radius": 14,
     "variant_button_width": "equal-width-buttons",
+    "sections": {
+      "test": {
+        "type": "test",
+        "blocks": {
+          "collection_list_e3bBLh": {
+            "type": "_collection-list",
+            "name": "Collection List",
+            "settings": {
+              "coll_list": "decoop carbon products rating",
+              "coll_list_desc": "5 starts"
+            },
+            "blocks": {}
+          }
+        },
+        "block_order": [
+          "collection_list_e3bBLh"
+        ],
+        "settings": {
+          "heading": "this is liquid section!",
+          "paragraph_UVI": "Liquid section paragraph!",
+          "paragraph_font": 20,
+          "heading_color": "#0000ff"
+        }
+      },
+      "static-test": {
+        "type": "static-test",
+        "settings": {}
+      }
+    },
     "content_for_index": [],
     "color_schemes": {
       "scheme-1": {
