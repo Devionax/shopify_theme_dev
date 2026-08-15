@@ -12,6 +12,15 @@
     "test_EJcyGc": {
       "type": "test",
       "blocks": {
+        "collection_faq_Mw4XyB": {
+          "type": "_collection-faq",
+          "name": "Collection FAQ",
+          "settings": {
+            "coll_faq_q": "is brought product can be retured ?",
+            "coll_faq_a": "yep! but within 15th days."
+          },
+          "blocks": {}
+        },
         "collection_faq_6B8VNP": {
           "type": "_collection-faq",
           "name": "Collection FAQ",
@@ -23,6 +32,7 @@
         }
       },
       "block_order": [
+        "collection_faq_Mw4XyB",
         "collection_faq_6B8VNP"
       ],
       "name": "uvi_block",
