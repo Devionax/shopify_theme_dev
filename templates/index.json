@@ -45,6 +45,7 @@
         "collection_list_33hbBL",
         "collection_faq_6B8VNP"
       ],
+      "disabled": true,
       "name": "uvi_block",
       "settings": {
         "heading": "this is liquid section!",
