@@ -137,9 +137,7 @@
       })();
     </script>
  {% comment %} <h1>{{ request.design_mode }} </h1> {% endcomment %}
-  <p>
-  {{ 'accessibility.skip_to_text' | t }}
-</p>
+  {% section 'text' %}
     <main
       id="MainContent"
       class="content-for-layout"
