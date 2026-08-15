@@ -1,0 +1,29 @@
+<div {{ block.shopify_attributes }}>
+  <ol>
+    <li>
+      <strong>{{ block.settings.coll_list }}</strong>
+
+      <ul>
+        <li>{{ block.settings.coll_list_desc }}</li>
+      </ul>
+    </li>
+  </ol>
+</div>
+
+{% schema %}
+{
+  "name": "Collection list",
+  "settings": [
+    {
+      "type": "text",
+      "id": "coll_list",
+      "label": "Collection entry"
+    },
+    {
+      "type": "text",
+      "id": "coll_list_desc",
+      "label": "Collection entry description"
+    }
+  ]
+}
+{% endschema %}
