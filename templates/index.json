@@ -12,6 +12,15 @@
     "test_EJcyGc": {
       "type": "test",
       "blocks": {
+        "collection_list_33hbBL": {
+          "type": "_collection-list",
+          "name": "Collection List",
+          "settings": {
+            "coll_list": "what about decoop of UVI pro?",
+            "coll_list_desc": "decoop made with meterail of UI pro is ouer best collection ."
+          },
+          "blocks": {}
+        },
         "collection_faq_Mw4XyB": {
           "type": "_collection-faq",
           "name": "Collection FAQ",
@@ -32,6 +41,7 @@
         }
       },
       "block_order": [
+        "collection_list_33hbBL",
         "collection_faq_Mw4XyB",
         "collection_faq_6B8VNP"
       ],
