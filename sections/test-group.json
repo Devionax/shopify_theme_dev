@@ -13,11 +13,32 @@
   "sections": {
     "test": {
       "type": "test",
-      "settings": {}
+      "disabled": true,
+      "settings": {
+        "heading": "this is liquid section!",
+        "paragraph_UVI": "Liquid section paragraph!",
+        "paragraph_font": 20,
+        "heading_color": "#0000ff"
+      }
     },
     "static_test": {
       "type": "static-test",
-      "settings": {}
+      "blocks": {
+        "static-message": {
+          "type": "_static-message",
+          "static": true,
+          "settings": {
+            "heading": "Hello from static block",
+            "message": "This block is rendered directly by Liquid code."
+          },
+          "blocks": {}
+        }
+      },
+      "disabled": true,
+      "settings": {
+        "heading": "My Static Section",
+        "description": "This section contains a statically rendered block."
+      }
     }
   },
   "order": [
