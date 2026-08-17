@@ -1,0 +1,160 @@
+.custom-carousel {
+  position: relative;
+  width: 100%;
+  padding: 20px 10px;
+}
+
+.custom-carousel__viewport {
+  overflow: hidden;
+}
+
+.custom-carousel__container {
+  display: flex;
+  gap: 16px;
+  touch-action: pan-y pinch-zoom;
+}
+
+.custom-carousel__slide {
+  flex: 0 0 50%;
+  min-width: 0;
+
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+
+  border: 1px solid rgba(0, 0, 0, 0.08);
+
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.08);
+
+  position: relative;
+}
+
+/* IMAGE */
+
+.custom-carousel__image {
+  display: block;
+
+  width: 100%;
+  height: 220px;
+
+  object-fit: fill;
+  object-position: center;
+
+  background: #f5f5f5;
+}
+
+/* CONTENT */
+
+.custom-carousel__content {
+  padding: 18px 18px 20px;
+}
+
+.custom-carousel__content h2 {
+  margin: 0 0 8px;
+
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.custom-carousel__content p {
+  margin: 0;
+
+  font-size: 14px;
+  line-height: 1.6;
+
+  color: #666;
+}
+
+/* BUTTONS */
+
+.custom-carousel__button {
+  position: absolute;
+
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  cursor: pointer;
+
+  z-index: 5;
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.12);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.custom-carousel__button:hover {
+  transform: translateY(-50%) scale(1.05);
+
+  box-shadow:
+    0 6px 16px rgba(0, 0, 0, 0.16);
+}
+
+.custom-carousel__button--prev {
+  left: 8px;
+}
+
+.custom-carousel__button--next {
+  right: 8px;
+}
+
+.custom-carousel__button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* TABLET */
+
+@media screen and (min-width: 750px) {
+
+  .custom-carousel {
+    padding: 24px 0;
+  }
+
+  .custom-carousel__container {
+    gap: 20px;
+  }
+
+  .custom-carousel__slide {
+    flex: 0 0 calc(50% - 10px);
+  }
+
+  .custom-carousel__image {
+    height: 240px;
+  }
+
+}
+
+/* DESKTOP */
+
+@media screen and (min-width: 990px) {
+
+  .custom-carousel__container {
+    gap: 24px;
+  }
+
+  .custom-carousel__slide {
+    flex: 0 0 calc(33.333% - 16px);
+  }
+
+  .custom-carousel__image {
+    height: 220px;
+  }
+
+}

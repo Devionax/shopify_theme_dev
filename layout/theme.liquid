@@ -59,6 +59,19 @@
   src="{{ 'direct-add-to-cart.js' | asset_url }}"
   defer
 ></script>
+
+{{ 'custom-carousel.css' | asset_url | stylesheet_tag }}
+
+{% comment %} <script
+  src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"
+  defer
+></script> {% endcomment %}
+
+<script
+  src="{{ 'custom-carousel.js' | asset_url }}"
+  defer
+></script>
+
     {{ content_for_header }}
     {% # theme-check-enable RemoteAsset %}
   </head>
