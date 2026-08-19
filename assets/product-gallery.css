@@ -33,13 +33,13 @@
 }
 
 .product-gallery__slide {
-  flex: 0 0 100%;
+  flex: 0 0 500px;
   min-width: 0;
 }
 
 .product-gallery__image {
   display: block;
-  width: 100px;
+  width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 12px;
