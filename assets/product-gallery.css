@@ -1,131 +1,113 @@
+/* =========================
+   GALLERY
+========================= */
+
 .product-gallery {
   display: grid;
-  grid-template-columns: 90px minmax(0, 1fr);
-
-  gap: 16px;
-
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 12px;
   width: 100%;
 }
 
 
 /* =========================
-   MAIN CAROUSEL
+   MAIN IMAGE
 ========================= */
 
 .product-gallery__main {
   position: relative;
-
   min-width: 0;
-
   grid-column: 2;
   grid-row: 1;
 }
 
-
 .product-gallery__viewport {
-  overflow: hidden;
-
   width: 100%;
-
-  border-radius: 16px;
+  overflow: hidden;
+  border-radius: 12px;
 }
-
 
 .product-gallery__container {
   display: flex;
-
   touch-action: pan-y pinch-zoom;
 }
 
-
 .product-gallery__slide {
   flex: 0 0 100%;
-
   min-width: 0;
 }
 
-
 .product-gallery__image {
   display: block;
-
   width: 100%;
-
   aspect-ratio: 1 / 1;
-
   object-fit: cover;
-
-  border-radius: 16px;
+  border-radius: 12px;
 }
 
 
 /* =========================
-   THUMBNAILS
+   DESKTOP THUMBNAILS
 ========================= */
 
 .product-gallery__thumbs {
   grid-column: 1;
   grid-row: 1;
 
+  width: 64px;
+  height: 100%;
+
   min-width: 0;
 }
 
-
 .product-gallery__thumbs-viewport {
-  overflow: hidden;
-
   width: 100%;
-
   height: 100%;
+  overflow: hidden;
 }
-
 
 .product-gallery__thumbs-container {
   display: flex;
-
   flex-direction: column;
-
-  gap: 12px;
+  gap: 8px;
 }
 
 
-.product-gallery__thumb {
-  flex: 0 0 72px;
+/* THUMB */
 
-  width: 72px;
-  height: 72px;
+.product-gallery__thumb {
+  flex: 0 0 56px;
+
+  width: 56px;
+  height: 56px;
 
   padding: 0;
 
-  border: 2px solid transparent;
+  overflow: hidden;
 
-  border-radius: 10px;
+  border: 1px solid transparent;
+  border-radius: 8px;
 
   background: transparent;
 
-  overflow: hidden;
+  opacity: 0.65;
 
   cursor: pointer;
 
-  opacity: 0.65;
-
   transition:
     opacity 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.2s ease;
+    border-color 0.2s ease;
 }
 
 
 .product-gallery__thumb:hover {
   opacity: 1;
-
-  transform: translateY(-1px);
 }
 
 
 .product-gallery__thumb.is-selected {
-  border-color: #111;
-
   opacity: 1;
+  border-color: #111;
 }
 
 
@@ -150,42 +132,57 @@
 
   z-index: 5;
 
-  width: 42px;
-  height: 42px;
+  width: 36px;
+  height: 36px;
 
   display: flex;
-
   align-items: center;
   justify-content: center;
 
-  transform: translateY(-50%);
+  padding: 0;
 
   border: 1px solid #ddd;
-
   border-radius: 50%;
 
-  background: white;
+  background: #fff;
 
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+  transform: translateY(-50%);
 
   cursor: pointer;
 
-  font-size: 18px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
 }
-
 
 .product-gallery__arrow--prev {
-  left: 14px;
+  left: 12px;
 }
-
 
 .product-gallery__arrow--next {
-  right: 14px;
+  right: 12px;
 }
 
 
-.product-gallery__arrow:hover {
-  transform: translateY(-50%) scale(1.05);
+/* =========================
+   TABLET
+========================= */
+
+@media screen and (max-width: 989px) and (min-width: 750px) {
+
+  .product-gallery {
+    grid-template-columns: 58px minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .product-gallery__thumbs {
+    width: 58px;
+  }
+
+  .product-gallery__thumb {
+    width: 50px;
+    height: 50px;
+    flex-basis: 50px;
+  }
+
 }
 
 
@@ -200,7 +197,7 @@
 
     flex-direction: column;
 
-    gap: 12px;
+    gap: 10px;
   }
 
 
@@ -214,22 +211,52 @@
 
     width: 100%;
 
-    height: 78px;
+    height: 58px;
+  }
+
+
+  .product-gallery__thumbs-viewport {
+    width: 100%;
+    height: 58px;
+
+    overflow: hidden;
   }
 
 
   .product-gallery__thumbs-container {
+
     flex-direction: row;
 
-    gap: 10px;
+    gap: 7px;
+
+    width: max-content;
   }
 
 
   .product-gallery__thumb {
-    flex: 0 0 68px;
 
-    width: 68px;
-    height: 68px;
+    flex: 0 0 50px;
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 7px;
+  }
+
+
+  .product-gallery__arrow {
+    width: 34px;
+    height: 34px;
+  }
+
+
+  .product-gallery__arrow--prev {
+    left: 8px;
+  }
+
+
+  .product-gallery__arrow--next {
+    right: 8px;
   }
 
 }
