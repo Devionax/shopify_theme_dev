@@ -1,31 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  console.log('CUSTOM CAROUSEL JS LOADED');
+
+  console.log('Embla:', typeof EmblaCarousel);
+
+  console.log(
+    'Embla Autoplay:',
+    typeof EmblaCarouselAutoplay
+  );
+
+
   const carousels = document.querySelectorAll(
     '.custom-carousel'
   );
+
+  console.log(
+    'Number of carousels:',
+    carousels.length
+  );
+
 
   carousels.forEach((carousel) => {
 
     const viewport = carousel.querySelector(
       '.custom-carousel__viewport'
     );
-
-    const previousButton = carousel.querySelector(
-      '.custom-carousel__arrow--prev'
-    );
-
-    const nextButton = carousel.querySelector(
-      '.custom-carousel__arrow--next'
-    );
-
-    if (!viewport) {
-      return;
-    }
-
-
-    /*
-     * Shopify settings
-     */
 
     const autoplayEnabled =
       carousel.dataset.autoplay === 'true';
@@ -34,9 +33,24 @@ document.addEventListener('DOMContentLoaded', () => {
       Number(carousel.dataset.autoplayDelay) || 4000;
 
 
-    /*
-     * Create Embla options
-     */
+    console.log('--------------------');
+
+    console.log(
+      'Autoplay enabled:',
+      autoplayEnabled
+    );
+
+    console.log(
+      'Autoplay delay:',
+      autoplayDelay
+    );
+
+
+    if (!viewport) {
+      console.log('Viewport not found');
+      return;
+    }
+
 
     const options = {
       loop: true,
@@ -44,33 +58,39 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
 
-    /*
-     * Create plugins
-     */
-
     const plugins = [];
 
 
-    if (
-      autoplayEnabled &&
-      typeof EmblaCarouselAutoplay !== 'undefined'
-    ) {
+    if (autoplayEnabled) {
+
+      console.log('Trying to create autoplay...');
+
+      if (
+        typeof EmblaCarouselAutoplay === 'undefined'
+      ) {
+
+        console.error(
+          'Embla Autoplay plugin NOT loaded!'
+        );
+
+        return;
+      }
+
 
       const autoplay =
         EmblaCarouselAutoplay({
           delay: autoplayDelay,
           stopOnInteraction: false,
-          stopOnMouseEnter: true
+          stopOnMouseEnter: false
         });
+
 
       plugins.push(autoplay);
 
+      console.log('Autoplay plugin created');
+
     }
 
-
-    /*
-     * Initialize Embla
-     */
 
     const embla = EmblaCarousel(
       viewport,
@@ -79,61 +99,21 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
 
-    /*
-     * Previous button
-     */
-
-    previousButton?.addEventListener(
-      'click',
-      () => {
-
-        embla.scrollPrev();
-
-      }
-    );
-
-
-    /*
-     * Next button
-     */
-
-    nextButton?.addEventListener(
-      'click',
-      () => {
-
-        embla.scrollNext();
-
-      }
-    );
-
-
-    /*
-     * Shopify Theme Editor
-     *
-     * When merchant changes blocks,
-     * Embla needs to recalculate.
-     */
-
-    embla.on(
-      'reInit',
-      () => {
-
-        console.log(
-          'Carousel reinitialized'
-        );
-
-      }
-    );
-
-
-    /*
-     * Debug
-     */
-
     console.log(
-      'Carousel initialized:',
-      carousel.id
+      'Embla initialized:',
+      embla
     );
+
+
+    setTimeout(() => {
+
+      console.log(
+        'Current slide:',
+        embla.selectedScrollSnap()
+      );
+
+    }, 5000);
+
 
   });
 
