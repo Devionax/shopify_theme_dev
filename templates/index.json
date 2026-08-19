@@ -63,62 +63,6 @@
       "name": "Custom Carousel",
       "settings": {}
     },
-    "custom_carousel_auto_E6LfeE": {
-      "type": "custom-carousel-auto",
-      "blocks": {
-        "slide_TnBgXU": {
-          "type": "slide",
-          "settings": {
-            "badge": "Featured",
-            "heading": "Amazing product",
-            "text": "This is a beautiful carousel card.",
-            "button_text": "Learn more",
-            "button_link": ""
-          }
-        },
-        "slide_LNVJqQ": {
-          "type": "slide",
-          "settings": {
-            "badge": "Featured",
-            "heading": "Amazing product",
-            "text": "This is a beautiful carousel card.",
-            "button_text": "Learn more",
-            "button_link": ""
-          }
-        },
-        "slide_w7HRPt": {
-          "type": "slide",
-          "settings": {
-            "badge": "Featured",
-            "heading": "Amazing product",
-            "text": "This is a beautiful carousel card.",
-            "button_text": "Learn more",
-            "button_link": ""
-          }
-        },
-        "slide_EADWTp": {
-          "type": "slide",
-          "settings": {
-            "badge": "Featured",
-            "heading": "Amazing product",
-            "text": "This is a beautiful carousel card.",
-            "button_text": "Learn more",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "slide_TnBgXU",
-        "slide_LNVJqQ",
-        "slide_w7HRPt",
-        "slide_EADWTp"
-      ],
-      "name": "Autoplay Carousel",
-      "settings": {
-        "autoplay": true,
-        "autoplay_delay": 2
-      }
-    },
     "test_EJcyGc": {
       "type": "test",
       "blocks": {
@@ -438,13 +382,69 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "custom_carousel_auto_E6LfeE": {
+      "type": "custom-carousel-auto",
+      "blocks": {
+        "slide_TnBgXU": {
+          "type": "slide",
+          "settings": {
+            "badge": "Featured",
+            "heading": "Amazing product",
+            "text": "This is a beautiful carousel card.",
+            "button_text": "Learn more",
+            "button_link": ""
+          }
+        },
+        "slide_LNVJqQ": {
+          "type": "slide",
+          "settings": {
+            "badge": "Featured",
+            "heading": "Amazing product",
+            "text": "This is a beautiful carousel card.",
+            "button_text": "Learn more",
+            "button_link": ""
+          }
+        },
+        "slide_w7HRPt": {
+          "type": "slide",
+          "settings": {
+            "badge": "Featured",
+            "heading": "Amazing product",
+            "text": "This is a beautiful carousel card.",
+            "button_text": "Learn more",
+            "button_link": ""
+          }
+        },
+        "slide_EADWTp": {
+          "type": "slide",
+          "settings": {
+            "badge": "Featured",
+            "heading": "Amazing product",
+            "text": "This is a beautiful carousel card.",
+            "button_text": "Learn more",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_TnBgXU",
+        "slide_LNVJqQ",
+        "slide_w7HRPt",
+        "slide_EADWTp"
+      ],
+      "name": "Autoplay Carousel",
+      "settings": {
+        "autoplay": true,
+        "autoplay_delay": 2
+      }
     }
   },
   "order": [
-    "custom_carousel_4PdNPw",
-    "custom_carousel_auto_E6LfeE",
     "test_EJcyGc",
     "hero_jVaWmY",
-    "product_list_fa6P9H"
+    "product_list_fa6P9H",
+    "custom_carousel_auto_E6LfeE",
+    "custom_carousel_4PdNPw"
   ]
 }
