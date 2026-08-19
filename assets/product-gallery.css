@@ -1,98 +1,158 @@
-/* =========================
-   GALLERY
-========================= */
+/* =========================================
+   PRODUCT GALLERY
+========================================= */
 
 .product-gallery {
   display: grid;
   grid-template-columns: 64px minmax(0, 1fr);
-  gap: 12px;
+
+  gap: 14px;
+
   width: 100%;
+  max-width: 900px;
+
+  margin: 0 auto;
 }
 
 
-/* =========================
-   MAIN IMAGE
-========================= */
+/* =========================================
+   MAIN CAROUSEL
+========================================= */
 
 .product-gallery__main {
   position: relative;
+
   min-width: 0;
+
   grid-column: 2;
   grid-row: 1;
 }
 
+
+/*
+  VERY IMPORTANT
+
+  Embla viewport must hide every slide
+  except the visible area.
+*/
+
 .product-gallery__viewport {
   width: 100%;
+
   overflow: hidden;
+
   border-radius: 12px;
 }
+
+
+/*
+  Embla container
+*/
 
 .product-gallery__container {
   display: flex;
+
+  width: 100%;
+
   touch-action: pan-y pinch-zoom;
 }
 
+
+/*
+  ONE SLIDE = ONE FULL VIEWPORT
+
+  This is the important fix.
+*/
+
 .product-gallery__slide {
-  flex: 0 0 500px;
+  flex: 0 0 100%;
+
+  width: 100%;
   min-width: 0;
+
+  position: relative;
 }
+
+
+/*
+  Main product image
+
+  contain = don't crop product
+*/
 
 .product-gallery__image {
   display: block;
+
   width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
+
+  height: min(70vh, 650px);
+
+  object-fit: contain;
+
+  object-position: center;
+
   border-radius: 12px;
 }
 
 
-/* =========================
-   DESKTOP THUMBNAILS
-========================= */
+/* =========================================
+   THUMBNAILS - DESKTOP
+========================================= */
 
 .product-gallery__thumbs {
   grid-column: 1;
   grid-row: 1;
 
   width: 64px;
-  height: 100%;
+
+  height: min(70vh, 650px);
 
   min-width: 0;
 }
 
+
 .product-gallery__thumbs-viewport {
   width: 100%;
   height: 100%;
+
   overflow: hidden;
 }
 
+
 .product-gallery__thumbs-container {
   display: flex;
+
   flex-direction: column;
+
   gap: 8px;
+
+  width: 100%;
 }
 
 
-/* THUMB */
+/*
+  SMALL THUMBNAIL
+*/
 
 .product-gallery__thumb {
-  flex: 0 0 56px;
+  flex: 0 0 54px;
 
-  width: 56px;
-  height: 56px;
+  width: 54px;
+  height: 54px;
 
   padding: 0;
 
   overflow: hidden;
 
   border: 1px solid transparent;
+
   border-radius: 8px;
 
   background: transparent;
 
-  opacity: 0.65;
-
   cursor: pointer;
+
+  opacity: 0.55;
 
   transition:
     opacity 0.2s ease,
@@ -107,6 +167,7 @@
 
 .product-gallery__thumb.is-selected {
   opacity: 1;
+
   border-color: #111;
 }
 
@@ -121,92 +182,133 @@
 }
 
 
-/* =========================
-   ARROWS
-========================= */
+/* =========================================
+   MAIN ARROWS
+========================================= */
 
 .product-gallery__arrow {
   position: absolute;
 
   top: 50%;
 
-  z-index: 5;
+  z-index: 10;
 
   width: 36px;
   height: 36px;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
   padding: 0;
 
   border: 1px solid #ddd;
+
   border-radius: 50%;
 
-  background: #fff;
+  background: rgba(255, 255, 255, 0.95);
 
   transform: translateY(-50%);
 
   cursor: pointer;
 
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+
+  transition: transform 0.2s ease;
 }
+
+
+.product-gallery__arrow:hover {
+  transform: translateY(-50%) scale(1.05);
+}
+
 
 .product-gallery__arrow--prev {
   left: 12px;
 }
+
 
 .product-gallery__arrow--next {
   right: 12px;
 }
 
 
-/* =========================
+/* =========================================
    TABLET
-========================= */
+========================================= */
 
 @media screen and (max-width: 989px) and (min-width: 750px) {
 
   .product-gallery {
     grid-template-columns: 58px minmax(0, 1fr);
+
     gap: 10px;
   }
+
 
   .product-gallery__thumbs {
     width: 58px;
   }
 
+
   .product-gallery__thumb {
-    width: 50px;
-    height: 50px;
-    flex-basis: 50px;
+    width: 48px;
+    height: 48px;
+
+    flex-basis: 48px;
+  }
+
+
+  .product-gallery__image {
+    height: min(65vh, 550px);
   }
 
 }
 
 
-/* =========================
+/* =========================================
    MOBILE
-========================= */
+========================================= */
 
 @media screen and (max-width: 749px) {
 
   .product-gallery {
+
     display: flex;
 
     flex-direction: column;
 
     gap: 10px;
+
+    width: 100%;
   }
 
 
   .product-gallery__main {
+
     order: 1;
+
+    width: 100%;
   }
 
 
+  .product-gallery__image {
+
+    width: 100%;
+
+    height: min(70vh, 500px);
+
+    object-fit: contain;
+  }
+
+
+  /* =========================
+     MOBILE THUMBNAILS
+  ========================= */
+
   .product-gallery__thumbs {
+
     order: 2;
 
     width: 100%;
@@ -216,7 +318,9 @@
 
 
   .product-gallery__thumbs-viewport {
+
     width: 100%;
+
     height: 58px;
 
     overflow: hidden;
@@ -227,7 +331,7 @@
 
     flex-direction: row;
 
-    gap: 7px;
+    gap: 8px;
 
     width: max-content;
   }
@@ -238,6 +342,7 @@
     flex: 0 0 50px;
 
     width: 50px;
+
     height: 50px;
 
     border-radius: 7px;
@@ -245,17 +350,20 @@
 
 
   .product-gallery__arrow {
+
     width: 34px;
     height: 34px;
   }
 
 
   .product-gallery__arrow--prev {
+
     left: 8px;
   }
 
 
   .product-gallery__arrow--next {
+
     right: 8px;
   }
 
