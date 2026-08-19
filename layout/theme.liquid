@@ -72,6 +72,23 @@
   defer
 ></script>
 
+<script
+  src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"
+  defer
+></script>
+
+<script
+  src="https://unpkg.com/embla-carousel-autoplay/embla-carousel-autoplay.umd.js"
+  defer
+></script>
+
+{{ 'custom-carousel-auto.css' | asset_url | stylesheet_tag }}
+
+<script
+  src="{{ 'custom-carousel-auto.js' | asset_url }}"
+  defer
+></script>
+
     {{ content_for_header }}
     {% # theme-check-enable RemoteAsset %}
   </head>
