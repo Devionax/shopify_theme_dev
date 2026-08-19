@@ -1,0 +1,172 @@
+<div
+  class="product-gallery"
+  id="ProductGallery-{{ section.id }}"
+>
+
+  <div class="product-gallery__main">
+
+    <div class="product-gallery__viewport">
+
+      <div class="product-gallery__container">
+
+        {% for block in section.blocks %}
+
+          <div
+            class="product-gallery__slide"
+            {{ block.shopify_attributes }}
+          >
+
+            {% if block.settings.image != blank %}
+
+              {{
+                block.settings.image
+                | image_url: width: 1200
+                | image_tag:
+                  loading: 'lazy',
+                  class: 'product-gallery__image',
+                  alt: block.settings.image.alt
+              }}
+
+            {% else %}
+
+              {{ 'product-1' | placeholder_svg_tag:
+                'product-gallery__image product-gallery__placeholder'
+              }}
+
+            {% endif %}
+
+          </div>
+
+        {% endfor %}
+
+      </div>
+
+    </div>
+
+    {% if section.blocks.size > 1 %}
+
+      <button
+        type="button"
+        class="product-gallery__arrow product-gallery__arrow--prev"
+        aria-label="Previous image"
+      >
+        ←
+      </button>
+
+      <button
+        type="button"
+        class="product-gallery__arrow product-gallery__arrow--next"
+        aria-label="Next image"
+      >
+        →
+      </button>
+
+    {% endif %}
+
+  </div>
+
+
+  {% if section.blocks.size > 1 %}
+
+    <div class="product-gallery__thumbs">
+
+      <div class="product-gallery__thumbs-viewport">
+
+        <div class="product-gallery__thumbs-container">
+
+          {% for block in section.blocks %}
+
+            <button
+              type="button"
+              class="product-gallery__thumb"
+              aria-label="Go to image {{ forloop.index }}"
+            >
+
+              {% if block.settings.image != blank %}
+
+                {{
+                  block.settings.image
+                  | image_url: width: 200
+                  | image_tag:
+                    loading: 'lazy',
+                    class: 'product-gallery__thumb-image',
+                    alt: block.settings.image.alt
+                }}
+
+              {% else %}
+
+                {{ 'product-1' | placeholder_svg_tag:
+                  'product-gallery__thumb-image'
+                }}
+
+              {% endif %}
+
+            </button>
+
+          {% endfor %}
+
+        </div>
+
+      </div>
+
+    </div>
+
+  {% endif %}
+
+</div>
+
+
+{% schema %}
+
+{
+  "name": "Product gallery",
+
+  "settings": [],
+
+  "blocks": [
+
+    {
+      "type": "image",
+      "name": "Gallery image",
+
+      "settings": [
+
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+
+      ]
+
+    }
+
+  ],
+
+  "presets": [
+
+    {
+      "name": "Product gallery",
+
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+
+    }
+
+  ]
+
+}
+
+{% endschema %}
