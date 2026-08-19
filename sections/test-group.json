@@ -10,6 +10,23 @@
 {
   "name": "test-group",
   "type": "header",
-  "sections": {},
-  "order": []
+  "sections": {
+    "divider_BeATcA": {
+      "type": "divider",
+      "name": "t:names.divider_section",
+      "settings": {
+        "color_scheme": "",
+        "section_width": "full-width",
+        "thickness": 1,
+        "corner_radius": "square",
+        "width_percent": 100,
+        "alignment_horizontal": "center",
+        "padding-block-start": 16,
+        "padding-block-end": 16
+      }
+    }
+  },
+  "order": [
+    "divider_BeATcA"
+  ]
 }
