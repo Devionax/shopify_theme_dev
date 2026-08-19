@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         embla.selectedScrollSnap()
       );
 
-    }, 5000);
+    }, 500);
 
 
   });
