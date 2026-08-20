@@ -46,6 +46,14 @@ console.log({{ product.tags | json }})
 
 {% if product.tags contains 'discount' %}
   <span>Discount Available</span>
+
+  {% assign discount_count = 0 %}
+
+{% for discount in cart.discount_applications %}
+  {% assign discount_count = discount_count | plus: 1 %}
+{% endfor %}
+
+{{ discount_count }}
 {% endif %}
 
 {% comment %} {% assign deal = product.metafields.custom.decoop_detail.value %}
