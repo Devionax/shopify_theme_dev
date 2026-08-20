@@ -36,9 +36,13 @@
 
 <ul class="brand-list">
   {% for brand in product.metafields.custom.decoop_brand.value %}
-    <li>{{ forloop.index  }}-{{ brand }}</li>
+    <li>{{ brand }}</li>
   {% endfor %}
 </ul>
+
+{% if product.tags contains 'discount' %}
+  <span>Discount Available</span>
+{% endif %}
 
 {% comment %} {% assign deal = product.metafields.custom.decoop_detail.value %}
 
