@@ -36,7 +36,7 @@
 
 <ul class="brand-list">
   {% for brand in product.metafields.custom.decoop_brand.value %}
-    <li>{{ brand }}</li>
+    <li>{{ forloop.index  }}-{{ brand }}</li>
   {% endfor %}
 </ul>
 
