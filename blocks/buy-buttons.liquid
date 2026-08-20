@@ -40,6 +40,10 @@
   {% endfor %}
 </ul>
 
+<script>
+console.log({{ product.tags | json }})
+  </script>
+
 {% if product.tags contains 'discount' %}
   <span>Discount Available</span>
 {% endif %}
