@@ -39,6 +39,7 @@
     <li>{{ brand }}</li>
   {% endfor %}
 </ul>
+{% render 'size-availability' %}
 
 <script>
 console.log({{ product.tags | json }})
