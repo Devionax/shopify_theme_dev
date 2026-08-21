@@ -1,63 +1,176 @@
 
-  document.addEventListener('click', function (event) {
+  class SizeAvailabilityModal extends HTMLElement {
 
-    const openButton = event.target.closest(
-      '.size-availability__open'
-    );
+    constructor() {
+      super();
 
-    if (openButton) {
+      this.dialog = null;
+      this.openButton = null;
+      this.closeButtons = [];
+    }
 
-      const section = openButton.closest(
-        '.size-availability'
-      );
 
-      const dialog = section?.querySelector(
-        '.size-availability__dialog'
-      );
+    connectedCallback() {
+      console.log('SizeAvailabilityModal connected');
 
-      console.log('Open button clicked');
-      console.log('Dialog:', dialog);
+      this.initialize();
+    }
 
-      if (dialog && !dialog.open) {
-        dialog.showModal();
+
+    initialize() {
+
+      this.dialog = this.querySelector('dialog');
+
+      this.openButton = this.querySelector('[data-open]');
+
+      this.closeButtons = this.querySelectorAll('[data-close]');
+
+
+      console.log('Dialog:', this.dialog);
+      console.log('Open button:', this.openButton);
+      console.log('Close buttons:', this.closeButtons);
+
+
+      if (!this.dialog) {
+        console.error(
+          'SizeAvailabilityModal: dialog not found'
+        );
+
+        return;
       }
 
-      return;
-    }
 
+      if (!this.openButton) {
+        console.error(
+          'SizeAvailabilityModal: open button not found'
+        );
 
-    const closeButton = event.target.closest(
-      '.size-availability__close, .size-availability__done'
-    );
-
-    if (closeButton) {
-
-      const section = closeButton.closest(
-        '.size-availability'
-      );
-
-      const dialog = section?.querySelector(
-        '.size-availability__dialog'
-      );
-
-      if (dialog?.open) {
-        dialog.close();
+        return;
       }
 
-      return;
+
+      /*
+       * Prevent duplicate event listeners
+       */
+
+      if (this.initialized) {
+        return;
+      }
+
+      this.initialized = true;
+
+
+      /*
+       * OPEN
+       */
+
+      this.openButton.addEventListener(
+        'click',
+        this.handleOpen.bind(this)
+      );
+
+
+      /*
+       * CLOSE
+       */
+
+      this.closeButtons.forEach((button) => {
+
+        button.addEventListener(
+          'click',
+          this.handleClose.bind(this)
+        );
+
+      });
+
+
+      /*
+       * BACKDROP CLICK
+       */
+
+      this.dialog.addEventListener(
+        'click',
+        this.handleDialogClick.bind(this)
+      );
+
     }
 
 
-    /*
-      Close when clicking outside modal content
-    */
+    handleOpen(event) {
 
-    const dialog = event.target.closest(
-      '.size-availability__dialog'
+      event.preventDefault();
+
+      console.log('Size availability open clicked');
+
+      if (!this.dialog) {
+        console.error('Dialog does not exist');
+
+        return;
+      }
+
+
+      if (!this.dialog.open) {
+
+        this.dialog.showModal();
+
+        console.log('Dialog opened');
+
+      }
+
+    }
+
+
+    handleClose(event) {
+
+      event.preventDefault();
+
+      console.log('Size availability close clicked');
+
+      if (
+        this.dialog &&
+        this.dialog.open
+      ) {
+
+        this.dialog.close();
+
+        console.log('Dialog closed');
+
+      }
+
+    }
+
+
+    handleDialogClick(event) {
+
+      /*
+       * If user clicks the dialog backdrop
+       */
+
+      if (event.target === this.dialog) {
+
+        this.dialog.close();
+
+      }
+
+    }
+
+  }
+
+
+  /*
+   * Register custom element
+   */
+
+  if (
+    !customElements.get(
+      'size-availability-modal'
+    )
+  ) {
+
+    customElements.define(
+      'size-availability-modal',
+      SizeAvailabilityModal
     );
 
-    if (dialog && event.target === dialog) {
-      dialog.close();
-    }
+  }
 
-  });
