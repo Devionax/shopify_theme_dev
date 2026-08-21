@@ -39,7 +39,11 @@
     <li>{{ brand }}</li>
   {% endfor %}
 </ul>
-{% render 'size-availability' %}
+
+ {% content_for 'block',
+    type: 'size-availability',
+    id: 'size-availability'
+  %}
 
 <script>
 console.log({{ product.tags | json }})
@@ -503,6 +507,10 @@ console.log({{ product.tags | json }})
       "name": "t:names.product_buy_buttons",
       "category": "t:categories.product",
       "blocks": {
+        "size-availability": {
+    "type": "size-availability",
+    "static": true
+  },
         "quantity": {
           "type": "quantity",
           "static": true
