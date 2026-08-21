@@ -13,7 +13,7 @@
   </div>
 
 
-  <modal-dialog>
+  <size-availability-modal>
 
     <dialog class="size-availability__dialog">
 
@@ -195,7 +195,7 @@
 
     </dialog>
 
-  </modal-dialog>
+  </size-availability-modal>
 
 </section>
 
@@ -522,66 +522,60 @@
 
 <script>
 
-  class ModalDialog extends HTMLElement {
+  class SizeAvailabilityModal extends HTMLElement {
 
     connectedCallback() {
 
-      /*
-        Find the native <dialog>
-        inside this custom element.
-      */
-
       this.dialog = this.querySelector('dialog');
 
+      this.openButton = this.querySelector('[data-open]');
 
-      /*
-        Find the button that opens
-        the dialog.
-      */
-
-      this.openButton =
-        this.querySelector('[data-open]');
+      this.closeButtons = this.querySelectorAll('[data-close]');
 
 
-      /*
-        Find ALL buttons that close
-        the dialog.
-      */
+      /* =========================
+         SAFETY CHECK
+      ========================= */
 
-      this.closeButtons =
-        this.querySelectorAll('[data-close]');
-
-
-      /*
-        Open button
-      */
-
-      if (this.openButton) {
-
-        this.openButton.addEventListener(
-          'click',
-          () => {
-
-            this.open();
-
-          }
-        );
-
+      if (!this.dialog || !this.openButton) {
+        return;
       }
 
 
-      /*
-        Close buttons
-      */
+      /* =========================
+         OPEN BUTTON
+      ========================= */
+
+      this.openButton.addEventListener(
+        'click',
+        (event) => {
+
+          event.preventDefault();
+
+          if (!this.dialog.open) {
+            this.dialog.showModal();
+          }
+
+        }
+      );
+
+
+      /* =========================
+         CLOSE BUTTONS
+      ========================= */
 
       this.closeButtons.forEach(
         (button) => {
 
           button.addEventListener(
             'click',
-            () => {
+            (event) => {
 
-              this.close();
+              event.preventDefault();
+
+              if (this.dialog.open) {
+                this.dialog.close();
+              }
 
             }
           );
@@ -590,10 +584,9 @@
       );
 
 
-      /*
-        Close when clicking
-        the backdrop.
-      */
+      /* =========================
+         BACKDROP CLICK
+      ========================= */
 
       this.dialog.addEventListener(
         'click',
@@ -601,7 +594,7 @@
 
           if (event.target === this.dialog) {
 
-            this.close();
+            this.dialog.close();
 
           }
 
@@ -610,73 +603,19 @@
 
     }
 
-
-    /*
-      =========================
-      OPEN METHOD
-      =========================
-
-      This method is OUR method.
-
-      showModal() is the browser's
-      built-in <dialog> method.
-    */
-
-    open() {
-
-      if (!this.dialog) {
-        return;
-      }
-
-
-      if (!this.dialog.open) {
-
-        this.dialog.showModal();
-
-      }
-
-    }
-
-
-    /*
-      =========================
-      CLOSE METHOD
-      =========================
-
-      This method is OUR method.
-
-      close() on this.dialog is
-      the browser's built-in
-      <dialog> method.
-    */
-
-    close() {
-
-      if (!this.dialog) {
-        return;
-      }
-
-
-      if (this.dialog.open) {
-
-        this.dialog.close();
-
-      }
-
-    }
-
   }
 
 
-  /*
-    Register our custom element
-  */
+  /* =========================
+     REGISTER CUSTOM ELEMENT
+  ========================= */
 
- document.addEventListener('DOMContentLoaded', function() {
-  if (!customElements.get('modal-dialog')) {
-    customElements.define('modal-dialog', ModalDialog);
-  }
-});
+  if (!customElements.get('size-availability-modal')) {
+
+    customElements.define(
+      'size-availability-modal',
+      SizeAvailabilityModal
+    );
 
   }
 
