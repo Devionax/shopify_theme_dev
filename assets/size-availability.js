@@ -1,98 +1,63 @@
 
-  class SizeAvailabilityModal extends HTMLElement {
+  document.addEventListener('click', function (event) {
 
-    connectedCallback() {
-
-      this.dialog = this.querySelector('dialog');
-
-      this.openButton = this.querySelector('[data-open]');
-
-      this.closeButtons = this.querySelectorAll('[data-close]');
-
-
-      /* =========================
-         SAFETY CHECK
-      ========================= */
-
-      if (!this.dialog || !this.openButton) {
-        return;
-      }
-
-
-      /* =========================
-         OPEN BUTTON
-      ========================= */
-
-      this.openButton.addEventListener(
-        'click',
-        (event) => {
-
-          event.preventDefault();
-
-          if (!this.dialog.open) {
-            this.dialog.showModal();
-          }
-
-        }
-      );
-
-
-      /* =========================
-         CLOSE BUTTONS
-      ========================= */
-
-      this.closeButtons.forEach(
-        (button) => {
-
-          button.addEventListener(
-            'click',
-            (event) => {
-
-              event.preventDefault();
-
-              if (this.dialog.open) {
-                this.dialog.close();
-              }
-
-            }
-          );
-
-        }
-      );
-
-
-      /* =========================
-         BACKDROP CLICK
-      ========================= */
-
-      this.dialog.addEventListener(
-        'click',
-        (event) => {
-
-          if (event.target === this.dialog) {
-
-            this.dialog.close();
-
-          }
-
-        }
-      );
-
-    }
-
-  }
-
-
-  /* =========================
-     REGISTER CUSTOM ELEMENT
-  ========================= */
-
-  if (!customElements.get('size-availability-modal')) {
-
-    customElements.define(
-      'size-availability-modal',
-      SizeAvailabilityModal
+    const openButton = event.target.closest(
+      '.size-availability__open'
     );
 
-  }
+    if (openButton) {
 
+      const section = openButton.closest(
+        '.size-availability'
+      );
+
+      const dialog = section?.querySelector(
+        '.size-availability__dialog'
+      );
+
+      console.log('Open button clicked');
+      console.log('Dialog:', dialog);
+
+      if (dialog && !dialog.open) {
+        dialog.showModal();
+      }
+
+      return;
+    }
+
+
+    const closeButton = event.target.closest(
+      '.size-availability__close, .size-availability__done'
+    );
+
+    if (closeButton) {
+
+      const section = closeButton.closest(
+        '.size-availability'
+      );
+
+      const dialog = section?.querySelector(
+        '.size-availability__dialog'
+      );
+
+      if (dialog?.open) {
+        dialog.close();
+      }
+
+      return;
+    }
+
+
+    /*
+      Close when clicking outside modal content
+    */
+
+    const dialog = event.target.closest(
+      '.size-availability__dialog'
+    );
+
+    if (dialog && event.target === dialog) {
+      dialog.close();
+    }
+
+  });
