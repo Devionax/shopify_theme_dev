@@ -1,61 +1,114 @@
+console.log("NUHVI SIZE JS LOADED");
+
+
 class SizeAvailabilityModal extends HTMLElement {
+
   constructor() {
     super();
-    this.dialog = null;
-    this.openButton = null;
-    this.closeButtons = [];
+
+    console.log("🔥 constructor called");
   }
 
+
   connectedCallback() {
-    // Query elements inside this custom element
-    this.dialog = this.querySelector('dialog');
-    this.openButton = this.querySelector('[data-open]');
-    this.closeButtons = this.querySelectorAll('[data-close]');
+
+    console.log("🔥 connectedCallback called");
+
+    this.dialog = this.querySelector("dialog");
+
+    this.openButton = this.querySelector("[data-open]");
+
+    this.closeButtons = this.querySelectorAll("[data-close]");
+
+
+    console.log("dialog:", this.dialog);
+
+    console.log("open button:", this.openButton);
+
+    console.log("close buttons:", this.closeButtons);
+
 
     if (!this.dialog || !this.openButton) {
-      console.warn('SizeAvailabilityModal: Missing required markup elements.');
+
+      console.error(
+        "❌ dialog or button not found"
+      );
+
       return;
     }
 
-    this.bindEvents();
-  }
 
-  bindEvents() {
-    // Open dialog
-    this.openButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (!this.dialog.open) {
-        this.dialog.showModal();
-      }
-    });
+    this.openButton.addEventListener(
+      "click",
+      () => {
 
-    // Close dialog via close buttons
-    this.closeButtons.forEach((button) => {
-      button.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (this.dialog.open) {
-          this.dialog.close();
+        console.log("🔥 BUTTON CLICKED");
+
+        if (!this.dialog.open) {
+
+          this.dialog.showModal();
+
         }
-      });
-    });
 
-    // Close when clicking the backdrop
-    this.dialog.addEventListener('click', (e) => {
-      if (e.target === this.dialog) {
-        this.dialog.close();
       }
-    });
+    );
+
+
+    this.closeButtons.forEach(
+      (button) => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            console.log("🔥 CLOSE CLICKED");
+
+            if (this.dialog.open) {
+
+              this.dialog.close();
+
+            }
+
+          }
+        );
+
+      }
+    );
+
+
+    this.dialog.addEventListener(
+      "click",
+      (event) => {
+
+        if (event.target === this.dialog) {
+
+          this.dialog.close();
+
+        }
+
+      }
+    );
+
   }
 
-  disconnectedCallback() {
-    // Cleanup reference listeners if removed from DOM
-    if (this.openButton) {
-      this.openButton.removeEventListener('click', () => {});
-    }
-  }
 }
 
-// Register Custom Element safely
-if (!customElements.get('size-availability-modal')) {
-  customElements.define('size-availability-modal', SizeAvailabilityModal);
+
+console.log(
+  "Existing custom element:",
+  customElements.get("size-availability-modal")
+);
+
+
+if (!customElements.get("size-availability-modal")) {
+
+  customElements.define(
+    "size-availability-modal",
+    SizeAvailabilityModal
+  );
+
+  console.log(
+    "🔥 custom element registered"
+  );
+
 }
