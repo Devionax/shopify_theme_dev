@@ -10,11 +10,39 @@
     }
 
 
-    connectedCallback() {
-      console.log('SizeAvailabilityModal connected');
+   connectedCallback() {
 
-      this.initialize();
-    }
+  console.log(
+    'CONNECTED CALLBACK RUNNING'
+  );
+
+  console.log(
+    'THIS:',
+    this
+  );
+
+  console.log(
+    'HTML:',
+    this.innerHTML
+  );
+
+  this.dialog =
+    this.querySelector('dialog');
+
+  this.openButton =
+    this.querySelector('[data-open]');
+
+  console.log(
+    'DIALOG FOUND:',
+    this.dialog
+  );
+
+  console.log(
+    'BUTTON FOUND:',
+    this.openButton
+  );
+
+}
 
 
     initialize() {
