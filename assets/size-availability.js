@@ -1,3 +1,5 @@
+console.log("nuhvi")
+
 class SizeAvailabilityModal extends HTMLElement {
 
   constructor() {
