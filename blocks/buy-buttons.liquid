@@ -45,6 +45,8 @@
     id: 'size-availability'
   %}
 
+  {% render 'size-availability' %}
+
 <script>
 console.log({{ product.tags | json }})
   </script>
@@ -508,9 +510,9 @@ console.log({{ product.tags | json }})
       "category": "t:categories.product",
       "blocks": {
         "size-availability": {
-    "type": "size-availability",
-    "static": true
-  },
+        "type": "size-availability",
+        "static": true
+      },
         "quantity": {
           "type": "quantity",
           "static": true
