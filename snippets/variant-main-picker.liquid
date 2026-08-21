@@ -24,6 +24,8 @@
 <script>
   const variants = {{ product.variants | json }};
 
+  console.log(variants)
+
   const container = document.querySelector('.variants-container');
 
   variants.forEach((variant) => {
