@@ -521,104 +521,27 @@
 
 
 <script>
+  console.log('SIZE AVAILABILITY SCRIPT LOADED');
 
-  class SizeAvailabilityModal extends HTMLElement {
+  console.log(
+    'size-availability-modal:',
+    customElements.get('size-availability-modal')
+  );
 
-    connectedCallback() {
+  console.log(
+    'element:',
+    document.querySelector('size-availability-modal')
+  );
 
-      this.dialog = this.querySelector('dialog');
+  console.log(
+    'button:',
+    document.querySelector('[data-open]')
+  );
 
-      this.openButton = this.querySelector('[data-open]');
-
-      this.closeButtons = this.querySelectorAll('[data-close]');
-
-
-      /* =========================
-         SAFETY CHECK
-      ========================= */
-
-      if (!this.dialog || !this.openButton) {
-        return;
-      }
-
-
-      /* =========================
-         OPEN BUTTON
-      ========================= */
-
-      this.openButton.addEventListener(
-        'click',
-        (event) => {
-
-          event.preventDefault();
-
-          if (!this.dialog.open) {
-            this.dialog.showModal();
-          }
-
-        }
-      );
-
-
-      /* =========================
-         CLOSE BUTTONS
-      ========================= */
-
-      this.closeButtons.forEach(
-        (button) => {
-
-          button.addEventListener(
-            'click',
-            (event) => {
-
-              event.preventDefault();
-
-              if (this.dialog.open) {
-                this.dialog.close();
-              }
-
-            }
-          );
-
-        }
-      );
-
-
-      /* =========================
-         BACKDROP CLICK
-      ========================= */
-
-      this.dialog.addEventListener(
-        'click',
-        (event) => {
-
-          if (event.target === this.dialog) {
-
-            this.dialog.close();
-
-          }
-
-        }
-      );
-
-    }
-
-  }
-
-
-  /* =========================
-     REGISTER CUSTOM ELEMENT
-  ========================= */
-
-  if (!customElements.get('size-availability-modal')) {
-
-    customElements.define(
-      'size-availability-modal',
-      SizeAvailabilityModal
-    );
-
-  }
-
+  console.log(
+    'dialog:',
+    document.querySelector('.size-availability__dialog')
+  );
 </script>
 
 
