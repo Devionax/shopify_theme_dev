@@ -4,79 +4,58 @@ class SizeAvailabilityModal extends HTMLElement {
     this.dialog = null;
     this.openButton = null;
     this.closeButtons = [];
-    this.initialized = false;
   }
 
   connectedCallback() {
-    // If DOM is ready, initialize directly; otherwise wait
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => this.init());
-    } else {
-      this.init();
-    }
-  }
-
-  init() {
-    if (this.initialized) return;
-
+    // Query elements inside this custom element
     this.dialog = this.querySelector('dialog');
     this.openButton = this.querySelector('[data-open]');
     this.closeButtons = this.querySelectorAll('[data-close]');
 
     if (!this.dialog || !this.openButton) {
-      // Retry via MutationObserver if dynamic content renders later
-      this.observeChildren();
+      console.warn('SizeAvailabilityModal: Missing required markup elements.');
       return;
     }
 
     this.bindEvents();
-    this.initialized = true;
-  }
-
-  observeChildren() {
-    const observer = new MutationObserver(() => {
-      this.dialog = this.querySelector('dialog');
-      this.openButton = this.querySelector('[data-open]');
-      this.closeButtons = this.querySelectorAll('[data-close]');
-
-      if (this.dialog && this.openButton) {
-        observer.disconnect();
-        this.bindEvents();
-        this.initialized = true;
-      }
-    });
-
-    observer.observe(this, { childList: true, subtree: true });
   }
 
   bindEvents() {
-    this.openButton.addEventListener('click', (e) => this.open(e));
-
-    this.closeButtons.forEach((btn) => {
-      btn.addEventListener('click', (e) => this.close(e));
+    // Open dialog
+    this.openButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (!this.dialog.open) {
+        this.dialog.showModal();
+      }
     });
 
-    // Close when clicking dialog backdrop
+    // Close dialog via close buttons
+    this.closeButtons.forEach((button) => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (this.dialog.open) {
+          this.dialog.close();
+        }
+      });
+    });
+
+    // Close when clicking the backdrop
     this.dialog.addEventListener('click', (e) => {
-      if (e.target === this.dialog) this.close(e);
+      if (e.target === this.dialog) {
+        this.dialog.close();
+      }
     });
   }
 
-  open(e) {
-    if (e) e.preventDefault();
-    if (this.dialog && !this.dialog.open) {
-      this.dialog.showModal();
-    }
-  }
-
-  close(e) {
-    if (e) e.preventDefault();
-    if (this.dialog && this.dialog.open) {
-      this.dialog.close();
+  disconnectedCallback() {
+    // Cleanup reference listeners if removed from DOM
+    if (this.openButton) {
+      this.openButton.removeEventListener('click', () => {});
     }
   }
 }
 
+// Register Custom Element safely
 if (!customElements.get('size-availability-modal')) {
   customElements.define('size-availability-modal', SizeAvailabilityModal);
 }
