@@ -124,63 +124,19 @@
   }
 
   .size-availability__dialog {
-  width: min(700px, calc(100% - 32px));
-  max-height: calc(100vh - 32px);
-  padding: 0;
-  border: none;
-  border-radius: 12px;
-  background: #fff;
-  overflow: hidden;
+    width: min(700px, calc(100% - 32px));
+    max-height: calc(100vh - 32px);
+    padding: 0;
+    border: none;
+    border-radius: 12px;
+    background: #fff;
+    overflow: hidden;
+    transition: all .5s ease-in-out;
+  }
 
-  /* Starting state */
-  opacity: 0;
-  transform: scale(0.8);
-
-  /* Animation */
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-
-/* =========================
-   OPEN STATE
-   ========================= */
-
-.size-availability__dialog.is-open {
-  opacity: 1;
-  transform: scale(1);
-}
-
-
-/* =========================
-   BACKDROP
-   ========================= */
-
-.size-availability__dialog::backdrop {
-  background: rgba(0, 0, 0, 0);
-
-  transition:
-    background 0.3s ease;
-}
-
-.size-availability__dialog.is-open::backdrop {
-  background: rgba(0, 0, 0, 0.55);
-}
-
-
-/* =========================
-   CLOSING STATE
-   ========================= */
-
-.size-availability__dialog.is-closing {
-  opacity: 0;
-  transform: scale(0.8);
-}
-
-.size-availability__dialog.is-closing::backdrop {
-  background: rgba(0, 0, 0, 0);
-}
+  .size-availability__dialog::backdrop {
+    background: rgba(0, 0, 0, 0.55);
+  }
 
   .size-availability__modal {
     display: flex;
