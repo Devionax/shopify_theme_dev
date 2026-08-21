@@ -59,9 +59,7 @@
   src="{{ 'direct-add-to-cart.js' | asset_url }}"
   defer
 ></script>
-   <script
-  src="{{ 'size-availability.js' | asset_url }}"
-></script>
+  
 
 {{ 'custom-carousel.css' | asset_url | stylesheet_tag }}
 
@@ -211,5 +209,9 @@
     {% if settings.quick_add or settings.mobile_quick_add %}
       {% render 'quick-add-modal' %}
     {% endif %}
+
+     <script
+  src="{{ 'size-availability.js' | asset_url }}"
+></script>
   </body>
 </html>
