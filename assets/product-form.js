@@ -476,7 +476,7 @@ class ProductFormComponent extends Component {
             new CartAddEvent(cart ?? undefined, id.toString(), {
               source: 'product-form-component',
               itemCount: Number(formData.get('quantity')) || Number(this.dataset.quantityDefault),
-              productId: this.dataset.productId,
+              productId: 48897106968801,
               sections: response.sections,
             })
           );
