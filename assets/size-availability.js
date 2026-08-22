@@ -1,7 +1,7 @@
 import { Component } from '@theme/component';
 
 
-class SizeAvailabilityModal extends component {
+class SizeAvailabilityModal extends Component {
 
   constructor() {
     super();
