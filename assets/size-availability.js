@@ -1,5 +1,7 @@
 import { Component } from '@theme/component';
 
+console.log(Component)
+
 
 class SizeAvailabilityModal extends Component {
 
