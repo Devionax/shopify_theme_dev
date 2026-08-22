@@ -391,6 +391,8 @@ class ProductFormComponent extends Component {
       formData.append('sections', cartItemComponentsSectionIds.join(','));
     });
 
+    console.log(cartItemComponentsSectionIds)
+
     const fetchCfg = fetchConfig('javascript', { body: formData });
 
     fetch(Theme.routes.cart_add_url, {
@@ -437,7 +439,7 @@ class ProductFormComponent extends Component {
               didError: true,
               source: 'product-form-component',
               itemCount: Number(formData.get('quantity')) || Number(this.dataset.quantityDefault),
-              productId: 48897106968801,
+              productId: this.dataset.productId,
             })
           );
 
