@@ -437,7 +437,7 @@ class ProductFormComponent extends Component {
               didError: true,
               source: 'product-form-component',
               itemCount: Number(formData.get('quantity')) || Number(this.dataset.quantityDefault),
-              productId: this.dataset.productId,
+              productId: 48897106968801,
             })
           );
 
