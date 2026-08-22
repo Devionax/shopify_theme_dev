@@ -73,7 +73,6 @@ export class AddToCartComponent extends Component {
 
     // Check if adding would exceed max before animating
     const productForm = /** @type {ProductFormComponent | null} */ (this.closest('product-form-component'));
-    console.log("product-form-component:" productForm)
     const quantitySelector = productForm?.refs.quantitySelector;
     if (quantitySelector?.canAddToCart) {
       const validation = quantitySelector.canAddToCart();
