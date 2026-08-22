@@ -2,6 +2,14 @@ import { Component } from '@theme/component';
 
 console.log(Component)
 
+console.log('1. Start');
+
+requestAnimationFrame(() => {
+  console.log('3. requestAnimationFrame callback');
+});
+
+console.log('2. End');
+
 
 class SizeAvailabilityModal extends Component {
 
