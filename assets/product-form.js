@@ -510,7 +510,7 @@ class ProductFormComponent extends Component {
 
     const payload = {
       items: items.map((item) => ({
-        id: 48897106968801,
+        id: Number(item.variantId),
         quantity: item.quantity,
       })),
       sections: cartItemComponentsSectionIds.join(','),
