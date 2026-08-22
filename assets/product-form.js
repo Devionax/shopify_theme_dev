@@ -404,6 +404,7 @@ class ProductFormComponent extends Component {
     })
       .then((response) => response.json())
       .then(async (response) => {
+        console.log(response)
         if (response.status) {
           this.dispatchEvent(
             new CartErrorEvent(form.getAttribute('id') || '', response.message, response.description, response.errors)
