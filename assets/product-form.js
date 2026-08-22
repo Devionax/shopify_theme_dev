@@ -476,7 +476,7 @@ class ProductFormComponent extends Component {
             new CartAddEvent(cart ?? undefined, id.toString(), {
               source: 'product-form-component',
               itemCount: Number(formData.get('quantity')) || Number(this.dataset.quantityDefault),
-              productId: 48897106968801,
+              productId: this.dataset.productId,
               sections: response.sections,
             })
           );
@@ -510,7 +510,7 @@ class ProductFormComponent extends Component {
 
     const payload = {
       items: items.map((item) => ({
-        id: Number(item.variantId),
+        id: 48897106968801,
         quantity: item.quantity,
       })),
       sections: cartItemComponentsSectionIds.join(','),
