@@ -1,4 +1,7 @@
-class SizeAvailabilityModal extends HTMLElement {
+import { Component } from '@theme/component';
+
+
+class SizeAvailabilityModal extends component {
 
   constructor() {
     super();
