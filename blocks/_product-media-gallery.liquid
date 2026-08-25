@@ -11,12 +11,12 @@
   singleProduct: singleProduct
 %}
 
-<script>
+{% comment %} <script>
   console.log("Blocks/*.liquid PRODUCT:", {{ singleProduct | json }});
   console.log("Blocks/*.liquid TEST:", {{ test | json }});
   console.log("Blocks/*.liquid BLOCK ID:", {{ block.id | json }});
   console.log("Blocks/*.liquid SECTION:", {{ section.id | json }});
-</script>
+</script> {% endcomment %}
 
 {% # theme-check-disable ValidVisibleIf %}
 {% schema %}
