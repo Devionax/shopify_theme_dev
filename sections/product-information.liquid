@@ -6,7 +6,7 @@
 
 <script>
   {% comment %} console.log("here single product detail:", {{ closest.product | json }}); {% endcomment %}
-   console.log("SECTION:", {{ section.id | json }});
+   console.log("sections/*.liquid SECTION:", {{ section.id | json }});
 </script>
 {% capture media_gallery %}
   {%- content_for 'block',
