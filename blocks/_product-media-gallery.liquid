@@ -9,11 +9,10 @@
 %}
 
 <script>
-console.log({{ closest.product | json }})
-console.log({{ block.id }})
-console.log({{ block }})
-console.log({{ section  }})
-
+  console.log("PRODUCT:", {{ closest.product | json }});
+  console.log("BLOCK ID:", {{ block.id | json }});
+  console.log("BLOCK:", {{ block | json }});
+  console.log("SECTION:", {{ section | json }});
 </script>
 
 {% # theme-check-disable ValidVisibleIf %}
