@@ -1,4 +1,10 @@
-<h1>
+<h1 
+  style="
+    text-align: {{ section.settings.heading_alignment }};
+    padding-top: {{ section.settings.padding_top }}px;
+  "
+
+>
     section parent liquid project
 </h1>
 
@@ -12,7 +18,39 @@
 {
 "name": "parent_section",
 "class": "main",
-"settings": [],
+"settings": [
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    }
+
+],
 "blocks": [],
 "presets": [
     {
