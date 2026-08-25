@@ -57,7 +57,7 @@
   ></script>
 {%- endif -%}
 {%- liquid
-  assign selected_product = singleProduct
+  assign selected_product = 1
   assign selected_variant_media = selected_product.selected_or_first_available_variant.featured_media
   assign first_3d_model = selected_product.media | where: 'media_type', 'model' | first
 
