@@ -6,14 +6,15 @@
   block_shopify_attributes: block.shopify_attributes,
   block: block,
   section: section,
-  blockFiletesting: "just testing in-side blocks/"
+ blockFiletesting: "just testing in-side blocks/",
+  test: test,
+  singleProduct: singleProduct
 %}
 
 <script>
   console.log("Blocks/*.liquid PRODUCT:", {{ singleProduct | json }});
   console.log("Blocks/*.liquid TEST:", {{ test | json }});
   console.log("Blocks/*.liquid BLOCK ID:", {{ block.id | json }});
-  console.log("Blocks/*.liquid BLOCK:", {{ block | json }});
   console.log("Blocks/*.liquid SECTION:", {{ section.id | json }});
 </script>
 
