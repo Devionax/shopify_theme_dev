@@ -12,40 +12,41 @@
 
   @example
 
-<script>
-  console.log(
-    "SNIPPET TEST:",
-    {{ test | json }}
-  );
-
-  console.log(
-    "SNIPPET PRODUCT:",
-    {{ singleProduct | json }}
-  );
-
-  console.log(
-    "SNIPPET BLOCK:",
-    {{ block | json }}
-  );
-
-  console.log(
-    "SNIPPET SECTION:",
-    {{ section | json }}
-  );
-
-  console.log(
-    "SNIPPET BLOCK FILE TEST:",
-    {{ blockFiletesting | json }}
-  );
-</script>
-
+  
   {% render 'product-media-gallery-content',
     media_presentation: 'carousel',
     block_settings: block.settings,
     block_id: block.id,
     block_shopify_attributes: block.shopify_attributes,
   %}
-{% enddoc %}
+  {% enddoc %}
+  
+  <script>
+    console.log(
+      "SNIPPET TEST:",
+      {{ test | json }}
+    );
+  
+    console.log(
+      "SNIPPET PRODUCT:",
+      {{ singleProduct | json }}
+    );
+  
+    console.log(
+      "SNIPPET BLOCK:",
+      {{ block | json }}
+    );
+  
+    console.log(
+      "SNIPPET SECTION:",
+      {{ section | json }}
+    );
+  
+    console.log(
+      "SNIPPET BLOCK FILE TEST:",
+      {{ blockFiletesting | json }}
+    );
+  </script>
 {%- if block_settings.zoom -%}
   <script
     src="{{ 'zoom-dialog.js' | asset_url }}"
