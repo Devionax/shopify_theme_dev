@@ -55,13 +55,13 @@
     type="module"
   ></script>
 {%- endif -%}
-{% if product.selected_or_first_available_variant.featured_media %}
+{% comment %} {% if product.selected_or_first_available_variant.featured_media %}
   Variant has featured media
 {% endif %}
 
 {% if product.selected_or_first_available_variant %}
   Variant exists
-{% endif %}
+{% endif %} {% endcomment %}
 
 
 {%- liquid
