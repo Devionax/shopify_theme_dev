@@ -524,7 +524,7 @@
         {% endfor %}
       </ul>
     {% endif %}
-
+{% comment %} 
     {%- if block_settings.zoom -%}
       <zoom-dialog
         ref="zoomDialogComponent"
@@ -627,7 +627,7 @@
           </ul>
         </dialog>
       </zoom-dialog>
-    {%- endif -%}
+    {%- endif -%} {% endcomment %}
 
     {%- if first_3d_model -%}
       <link
