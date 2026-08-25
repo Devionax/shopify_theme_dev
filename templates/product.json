@@ -590,9 +590,15 @@
         "padding-block-start": 40,
         "padding-block-end": 40
       }
+    },
+    "test_parent_YUNLMK": {
+      "type": "test-parent",
+      "name": "Parent Section!",
+      "settings": {}
     }
   },
   "order": [
+    "test_parent_YUNLMK",
     "main",
     "product_recommendations_qggXJq",
     "product_metaobject_QMaMrf",
