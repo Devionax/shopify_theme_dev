@@ -13,7 +13,10 @@
   @example
 
 <script>
-  console.log("snippet file fetching data from parent block:" + {{ blockFiletesting | json}})
+  console.log(
+    "snippet file fetching data from parent block:",
+    {{ blockFiletesting | json }}
+  );
 </script>
 
   {% render 'product-media-gallery-content',
