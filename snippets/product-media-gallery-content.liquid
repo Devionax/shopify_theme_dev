@@ -57,7 +57,7 @@
   ></script>
 {%- endif -%}
 {%- liquid
-  assign selected_product = 1
+  assign selected_product = closest.product
   assign selected_variant_media = selected_product.selected_or_first_available_variant.featured_media
   assign first_3d_model = selected_product.media | where: 'media_type', 'model' | first
 
@@ -106,7 +106,7 @@
   else
     assign slideshow_class = ''
 
-
+    
     if media_presentation == 'carousel'
       assign render_slideshow_arrows = true
     endif
