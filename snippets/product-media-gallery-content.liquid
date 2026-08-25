@@ -14,7 +14,27 @@
 
 <script>
   console.log(
-    "snippet file fetching data from parent block:",
+    "SNIPPET TEST:",
+    {{ test | json }}
+  );
+
+  console.log(
+    "SNIPPET PRODUCT:",
+    {{ singleProduct | json }}
+  );
+
+  console.log(
+    "SNIPPET BLOCK:",
+    {{ block | json }}
+  );
+
+  console.log(
+    "SNIPPET SECTION:",
+    {{ section | json }}
+  );
+
+  console.log(
+    "SNIPPET BLOCK FILE TEST:",
     {{ blockFiletesting | json }}
   );
 </script>
