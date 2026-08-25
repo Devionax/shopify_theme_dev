@@ -16,16 +16,16 @@
           "type": "_product-media-gallery",
           "static": true,
           "settings": {
-            "media_presentation": "grid",
+            "media_presentation": "carousel",
             "media_columns": "two",
             "image_gap": 4,
             "large_first_image": false,
-            "icons_style": "none",
-            "slideshow_controls_style": "counter",
-            "slideshow_mobile_controls_style": "dots",
+            "icons_style": "arrow",
+            "slideshow_controls_style": "thumbnails",
+            "slideshow_mobile_controls_style": "thumbnails",
             "thumbnail_position": "right",
             "thumbnail_width": 44,
-            "thumbnail_radius": 0,
+            "thumbnail_radius": 5,
             "aspect_ratio": "adapt",
             "constrain_to_viewport": true,
             "media_fit": "contain",
@@ -199,6 +199,12 @@
                 "padding-inline-end": 0
               },
               "blocks": {
+                "size-availability": {
+                  "type": "size-availability",
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                },
                 "quantity": {
                   "type": "quantity",
                   "static": true,
