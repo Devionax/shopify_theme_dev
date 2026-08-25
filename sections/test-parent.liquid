@@ -1,7 +1,7 @@
 <h1 
   style="
     text-align: {{ section.settings.heading_alignment }};
-    padding-top: {{section.settings.padding_top  }}px;
+    padding-top: {{ section.settings.padding_top }}px;
   "
 >
     section parent liquid project
@@ -38,13 +38,17 @@
       ],
       "default": "left"
     },
-   
     {
-  "type": "number",
-  "id": "padding_top",
-  "label": "Padding top",
-  "default": 20
-}
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    
 
 ],
 "blocks": [],
