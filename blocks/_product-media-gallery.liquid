@@ -9,11 +9,11 @@
 %}
 
 <script>
-  console.log("PRODUCT:", {{ singleProduct | json }});
-  console.log("TEST:", {{ test | json }});
-  console.log("BLOCK ID:", {{ block.id | json }});
-  console.log("BLOCK:", {{ block | json }});
-  console.log("SECTION:", {{ section.id | json }});
+  console.log("Blocks/*.liquid PRODUCT:", {{ singleProduct | json }});
+  console.log("Blocks/*.liquid TEST:", {{ test | json }});
+  console.log("Blocks/*.liquid BLOCK ID:", {{ block.id | json }});
+  console.log("Blocks/*.liquid BLOCK:", {{ block | json }});
+  console.log("Blocks/*.liquid SECTION:", {{ section.id | json }});
 </script>
 
 {% # theme-check-disable ValidVisibleIf %}
