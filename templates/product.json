@@ -11,7 +11,7 @@
   "sections": {
     "test_parent_YUNLMK": {
       "type": "test-parent",
-      "name": "Parent Section!",
+      "name": "Parent Section",
       "settings": {
         "heading_alignment": "center",
         "padding_top": 21
