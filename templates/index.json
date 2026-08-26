@@ -475,9 +475,68 @@
       ],
       "name": "Product gallery",
       "settings": {}
+    },
+    "1787756175bc027a18": {
+      "type": "_blocks",
+      "blocks": {
+        "discount_viewer_discount_list_ACHHgp": {
+          "type": "shopify://apps/discount-viewer/blocks/discount-list/01a03e4d-5449-778c-9f5e-294ce5ce0a03",
+          "settings": {
+            "eyebrow": "SAVE ON YOUR ORDER",
+            "heading": "Available offers",
+            "description": "<p>Explore the discounts currently available in our store.</p>",
+            "show_codes": true,
+            "show_expiry": true,
+            "copy_label": "Copy code",
+            "copied_label": "Copied",
+            "loading_text": "Loading available offers...",
+            "empty_text": "No offers are currently available.",
+            "error_text": "Offers could not be loaded. Please try again.",
+            "heading_size": 38,
+            "card_gap": 20,
+            "card_radius": 14,
+            "background_color": "#f7f7f7",
+            "card_background": "#ffffff",
+            "text_color": "#171717",
+            "muted_color": "#666666",
+            "accent_color": "#171717"
+          }
+        }
+      },
+      "block_order": [
+        "discount_viewer_discount_list_ACHHgp"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
+    "1787756175bc027a18",
     "test_EJcyGc",
     "hero_jVaWmY",
     "product_list_fa6P9H",
