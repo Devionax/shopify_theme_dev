@@ -1,14 +1,4 @@
-<script>
-const fetcher = async ()=>{
-  const response = await fetch("/apps/discount-viewer/discounts");
 
-const result = await response.json();
-
-console.log("log discount list by code editor:",result);
-}
-
-fetcher()
-</script>
 
 {% liquid
   assign order = 'logo,menu,localization,search,drawer_search,actions'
@@ -1133,6 +1123,20 @@ fetcher()
     hydrate('{{ section.id }}', url);
   </script>
 {% endunless %}
+
+
+
+<script>
+  const fetcher = async () => {
+    const response = await fetch("/apps/discount-viewer/discounts");
+
+    const result = await response.json();
+
+    console.log("log discount list by code editor:", result);
+  };
+
+  fetcher();
+</script>
 
 {% schema %}
 {
