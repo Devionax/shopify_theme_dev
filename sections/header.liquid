@@ -1,9 +1,13 @@
 <script>
-const response = await fetch("/apps/discount-viewer/discounts");
+const fetcher = async ()=>{
+  const response = await fetch("/apps/discount-viewer/discounts");
 
 const result = await response.json();
 
 console.log("log discount list by code editor:",result);
+}
+
+fetcher()
 </script>
 
 {% liquid
