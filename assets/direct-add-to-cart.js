@@ -9,58 +9,57 @@
   // ==========================================
 
   function test_cart(sections) {
-    if (!sections) {
-      console.error('No cart sections returned');
+  if (!sections) {
+    console.error('No cart sections returned');
+    return;
+  }
+
+  console.log('Updating cart UI with sections:', sections);
+
+  Object.entries(sections).forEach(([sectionId, html]) => {
+
+    // Shopify section wrapper ID
+    const currentSection = document.getElementById(
+      `shopify-section-${sectionId}`
+    );
+
+    if (!currentSection) {
+      console.warn(
+        'Section not found in DOM:',
+        `shopify-section-${sectionId}`
+      );
       return;
     }
 
-    console.log('Updating cart UI with sections:', sections);
+    // Convert Shopify returned HTML into DOM
+    const parser = new DOMParser();
 
-    Object.entries(sections).forEach(([sectionId, html]) => {
+    const newDocument = parser.parseFromString(
+      html,
+      'text/html'
+    );
 
-      // Shopify section ID
-      const currentSection = document.getElementById(sectionId);
+    const newSection = newDocument.querySelector(
+      `#${CSS.escape(`shopify-section-${sectionId}`)}`
+    );
 
-      if (!currentSection) {
-        console.warn(
-          'Section not found in DOM:',
-          sectionId
-        );
-        return;
-      }
-
-      // Convert returned HTML string into DOM
-      const parser = new DOMParser();
-
-      const newDocument = parser.parseFromString(
-        html,
-        'text/html'
-      );
-
-      const newSection = newDocument.querySelector(
-        `#${CSS.escape(sectionId)}`
-      );
-
-      if (!newSection) {
-        console.warn(
-          'New section not found:',
-          sectionId
-        );
-        return;
-      }
-
-      // Replace old section with new Shopify section
-      currentSection.replaceWith(
-        newSection
-      );
-
-      console.log(
-        'Updated section:',
+    if (!newSection) {
+      console.warn(
+        'New section not found:',
         sectionId
       );
-    });
-  }
+      return;
+    }
 
+    // Replace old header with new header
+    currentSection.replaceWith(newSection);
+
+    console.log(
+      'Successfully updated:',
+      `shopify-section-${sectionId}`
+    );
+  });
+}
 
   // ==========================================
   // DIRECT ADD TO CART
