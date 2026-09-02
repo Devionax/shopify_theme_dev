@@ -409,9 +409,9 @@ class ProductFormComponent extends Component {
       .then(async (response) => {
         console.log("Product Form Data Response <===>",response)
         if (response.status) {
-          this.dispatchEvent(
-            new CartErrorEvent(form.getAttribute('id') || '', response.message, response.description, response.errors)
-          ); 
+          // this.dispatchEvent(
+          //   new CartErrorEvent(form.getAttribute('id') || '', response.message, response.description, response.errors)
+          // ); 
         
           if (!addToCartTextError) return;
           addToCartTextError.classList.remove('hidden');
@@ -438,14 +438,14 @@ class ProductFormComponent extends Component {
 
           // When we add more than the maximum amount of items to the cart, we need to dispatch a cart update event
           // because our back-end still adds the max allowed amount to the cart.
-          // this.dispatchEvent(
-          //   new CartAddEvent({}, this.id, {
-          //     didError: true,
-          //     source: 'product-form-component', 
-          //     itemCount: Number(formData.get('quantity')) || Number(this.dataset.quantityDefault),
-          //     productId: this.dataset.productId,
-          //   })
-          // );
+          this.dispatchEvent(
+            new CartAddEvent({}, this.id, {
+              didError: true,
+              source: 'product-form-component', 
+              itemCount: Number(formData.get('quantity')) || Number(this.dataset.quantityDefault),
+              productId: this.dataset.productId,
+            })
+          );
 
           return;
         } else {
