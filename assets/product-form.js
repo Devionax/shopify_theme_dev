@@ -308,7 +308,6 @@ class ProductFormComponent extends Component {
 
   /** @returns {number} */
   #getQuantity() {
-    alert(Number(this.refs.quantitySelector?.getValue?.()) || Number(this.dataset.quantityDefault))
     return Number(this.refs.quantitySelector?.getValue?.()) || Number(this.dataset.quantityDefault) || 1;
   }
 
@@ -500,6 +499,7 @@ class ProductFormComponent extends Component {
 
   /** @param {Array<{variantId: string, quantity: number}>} items */
   #processBatchAddToCart(items) {
+    console.log("test", items)
     if (items.length === 0) return;
 
     const { addToCartTextError } = this.refs;
