@@ -240,7 +240,7 @@ class ProductFormComponent extends Component {
     }
 
     // Update quantity label if it exists
-    this.#updateQuantityLabel(cartQty);
+    // this.#updateQuantityLabel(cartQty);
 
     return cartQty;
   }
