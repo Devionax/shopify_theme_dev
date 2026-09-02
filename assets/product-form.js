@@ -212,7 +212,7 @@ class ProductFormComponent extends Component {
     target?.addEventListener(ThemeEvents.variantSelected, this.#onVariantSelected, { signal });
 
     // Listen for cart updates to sync data-cart-quantity
-    document.addEventListener(ThemeEvents.cartUpdate, this.#onCartUpdate, { signal });
+    // document.addEventListener(ThemeEvents.cartUpdate, this.#onCartUpdate, { signal });
   }
 
   disconnectedCallback() {
@@ -240,7 +240,7 @@ class ProductFormComponent extends Component {
     }
 
     // Update quantity label if it exists
-    // this.#updateQuantityLabel(cartQty);
+    this.#updateQuantityLabel(cartQty);
 
     return cartQty;
   }
