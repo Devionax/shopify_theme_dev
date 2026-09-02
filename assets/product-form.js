@@ -396,7 +396,7 @@ class ProductFormComponent extends Component {
 
     const fetchCfg = fetchConfig('javascript', { body: formData });
 
-    console.log("Product From data <======>" , fetchCfg)
+    // console.log("Product From data <======>" , fetchCfg)
 
     fetch(Theme.routes.cart_add_url, {
       ...fetchCfg,
