@@ -119,7 +119,7 @@ console.log({{ product.tags | json }})
         ref="liveRegion"
       ></div>
       {%- form 'product', product, id: product_form_id, data-type: 'add-to-cart-form' -%}
-        <input type="text" value="ALI" placeholder="ENTER HERE YOUR REVIEW!">
+        {% comment %} <input type="text" value="ALI" placeholder="ENTER HERE YOUR REVIEW!"> {% endcomment %}
         <input
           type="hidden"
           name="id"
