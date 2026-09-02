@@ -3,80 +3,29 @@
 
   window.directAddToCartInitialized = true;
 
-  // ==========================================
-  // UPDATE CART
-  // ==========================================
-  async function test_cart() {
-    try {
-      // Get latest cart
-      const cartResponse = await fetch('/cart.js');
-
-      if (!cartResponse.ok) {
-        throw new Error('Failed to fetch cart');
-      }
-
-      const cart = await cartResponse.json();
-
-      console.log('Updated cart:', cart);
-
-      // Find product form component
-      const productForm = document.querySelector(
-        'product-form-component'
-      );
-
-      // Tell Shopify theme that cart was updated
-      if (productForm && typeof CartAddEvent !== 'undefined') {
-        productForm.dispatchEvent(
-          new CartAddEvent(cart, 'direct-add-to-cart', {
-            source: 'direct-add-to-cart',
-            itemCount: cart.item_count,
-          })
-        );
-      }
-
-      return cart;
-
-    } catch (error) {
-      console.error('Cart update error:', error);
-      return null;
-    }
-  }
-
-
-  // ==========================================
-  // DIRECT ADD TO CART
-  // ==========================================
   document.addEventListener('click', async (event) => {
-
     const button = event.target.closest('.direct_addtocart_btn');
 
     if (!button) return;
 
     event.preventDefault();
 
-    // Prevent multiple clicks
     if (button.dataset.loading === 'true') return;
 
     button.dataset.loading = 'true';
 
     try {
-
-      // ==========================================
+      // ------------------------------------------
       // GET VARIANT URL
-      // ==========================================
-      const variantUrl = button.getAttribute(
-        'data-variant-url'
-      );
+      // ------------------------------------------
+
+      const variantUrl = button.getAttribute('data-variant-url');
 
       if (!variantUrl) {
         console.error('Variant URL not found');
         return;
       }
 
-
-      // ==========================================
-      // GET VARIANT ID
-      // ==========================================
       const url = new URL(
         variantUrl,
         window.location.origin
@@ -92,9 +41,31 @@
       }
 
 
-      // ==========================================
-      // ADD PRODUCT TO CART
-      // ==========================================
+      // ------------------------------------------
+      // GET CART SECTION IDS
+      // ------------------------------------------
+
+      const cartItemsComponents =
+        document.querySelectorAll('cart-items-component');
+
+      const sectionIds = [];
+
+      cartItemsComponents.forEach((item) => {
+        if (
+          item instanceof HTMLElement &&
+          item.dataset.sectionId
+        ) {
+          sectionIds.push(item.dataset.sectionId);
+        }
+      });
+
+      console.log('Cart sections:', sectionIds);
+
+
+      // ------------------------------------------
+      // ADD TO CART
+      // ------------------------------------------
+
       const response = await fetch('/cart/add.js', {
         method: 'POST',
 
@@ -109,16 +80,19 @@
               id: Number(variantId),
               quantity: 1
             }
-          ]
+          ],
+
+          // ⭐ IMPORTANT
+          sections: sectionIds.join(',')
         })
       });
 
 
-      // ==========================================
-      // HANDLE ERROR
-      // ==========================================
-      if (!response.ok) {
+      // ------------------------------------------
+      // ERROR
+      // ------------------------------------------
 
+      if (!response.ok) {
         const errorData =
           await response.json().catch(() => null);
 
@@ -132,27 +106,75 @@
       }
 
 
-      // ==========================================
-      // ADD SUCCESS
-      // ==========================================
+      // ------------------------------------------
+      // RESPONSE
+      // ------------------------------------------
+
       const data = await response.json();
 
+      console.log('Added to cart:', data);
+
       console.log(
-        'Added to cart:',
-        data
+        'Cart sections returned:',
+        data.sections
       );
 
 
-      // ==========================================
-      // UPDATE CART ICON / CART UI
-      // ==========================================
-      const cart = await test_cart();
+      // ------------------------------------------
+      // GET UPDATED CART
+      // ------------------------------------------
 
-      console.log(
-        'Cart after adding:',
-        cart
-      );
+      const cartResponse = await fetch('/cart.js');
 
+      const cart = await cartResponse.json();
+
+      console.log('Updated cart:', cart);
+
+
+      // ------------------------------------------
+      // FIND PRODUCT FORM COMPONENT
+      // ------------------------------------------
+
+      const productForm =
+        document.querySelector('product-form-component');
+
+
+      // ------------------------------------------
+      // DISPATCH CART EVENT
+      // ------------------------------------------
+
+      if (
+        productForm &&
+        typeof CartAddEvent !== 'undefined'
+      ) {
+
+        productForm.dispatchEvent(
+          new CartAddEvent(
+            cart,
+            productForm.id || 'direct-add-to-cart',
+            {
+              source: 'product-form-component',
+
+              itemCount: 1,
+
+              productId:
+                productForm.dataset.productId,
+
+              // ⭐ IMPORTANT
+              sections: data.sections
+            }
+          )
+        );
+
+        console.log(
+          'CartAddEvent dispatched'
+        );
+      } else {
+
+        console.warn(
+          'product-form-component or CartAddEvent not found'
+        );
+      }
 
     } catch (error) {
 
@@ -166,7 +188,6 @@
       button.dataset.loading = 'false';
 
     }
-
   });
 
 })();
