@@ -409,9 +409,9 @@ class ProductFormComponent extends Component {
       .then(async (response) => {
         console.log("Product Form Data Response <===>",response)
         if (response.status) {
-          // this.dispatchEvent(
-          //   new CartErrorEvent(form.getAttribute('id') || '', response.message, response.description, response.errors)
-          // ); 
+          this.dispatchEvent(
+            new CartErrorEvent(form.getAttribute('id') || '', response.message, response.description, response.errors)
+          ); 
         
           if (!addToCartTextError) return;
           addToCartTextError.classList.remove('hidden');
