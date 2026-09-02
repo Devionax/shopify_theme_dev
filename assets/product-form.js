@@ -315,6 +315,7 @@ class ProductFormComponent extends Component {
    * @param {Event} [event]
    */
   #processAddToCart(overrideVariantId, overrideQuantity, event) {
+    alert(overrideVariantId)
     const { addToCartTextError } = this.refs;
 
     if (this.#timeout) clearTimeout(this.#timeout);
