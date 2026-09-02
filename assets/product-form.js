@@ -257,7 +257,7 @@ class ProductFormComponent extends Component {
       const response = await fetch('/cart.js');
       const cart = await response.json();
 
-      // this.#updateCartQuantityFromData(cart);
+      this.#updateCartQuantityFromData(cart);
       return cart;
     } catch (error) {
       console.error('Failed to fetch cart quantity:', error);
@@ -582,7 +582,7 @@ class ProductFormComponent extends Component {
           setTimeout(() => this.#clearLiveRegionText(), SUCCESS_MESSAGE_DISPLAY_DURATION);
         }
 
-        const cart = await this.#fetchAndUpdateCartQuantity();
+        // const cart = await this.#fetchAndUpdateCartQuantity();
 
         const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
         this.dispatchEvent(
