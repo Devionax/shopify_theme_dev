@@ -257,7 +257,7 @@ class ProductFormComponent extends Component {
       const response = await fetch('/cart.js');
       const cart = await response.json();
 
-      this.#updateCartQuantityFromData(cart);
+      // this.#updateCartQuantityFromData(cart);
       return cart;
     } catch (error) {
       console.error('Failed to fetch cart quantity:', error);
