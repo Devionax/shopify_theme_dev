@@ -601,7 +601,7 @@ class ProductFormComponent extends Component {
    * @param {number} cartQty - The quantity in cart
    */
   #updateQuantityLabel(cartQty) {
-    alert(cartQty)
+    // alert(cartQty)
     const quantityLabel = this.refs.quantityLabelCartCount;
     if (quantityLabel) {
       const inCartText = quantityLabel.textContent?.match(/\((\d+)\s+(.+)\)/);
