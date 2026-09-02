@@ -308,6 +308,7 @@ class ProductFormComponent extends Component {
 
   /** @returns {number} */
   #getQuantity() {
+    alert(Number(this.refs.quantitySelector?.getValue?.()) || Number(this.dataset.quantityDefault))
     return Number(this.refs.quantitySelector?.getValue?.()) || Number(this.dataset.quantityDefault) || 1;
   }
 
