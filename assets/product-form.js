@@ -281,6 +281,7 @@ class ProductFormComponent extends Component {
 
   /** @param {Event} event */
   handleSubmit(event) {
+    console.log(event)
     event.preventDefault();
 
     if (this.#variantChangeInProgress) {
