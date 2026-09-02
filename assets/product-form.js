@@ -477,14 +477,14 @@ class ProductFormComponent extends Component {
           // Fetch the updated cart to get the actual total quantity for this variant
           const cart = await this.#fetchAndUpdateCartQuantity();
 
-          this.dispatchEvent(
-            new CartAddEvent(cart ?? undefined, id.toString(), {
-              source: 'product-form-component',
-              itemCount: Number(formData.get('quantity')) || Number(this.dataset.quantityDefault),
-              productId: this.dataset.productId,
-              sections: response.sections,
-            })
-          );
+          // this.dispatchEvent(
+          //   new CartAddEvent(cart ?? undefined, id.toString(), {
+          //     source: 'product-form-component',
+          //     itemCount: Number(formData.get('quantity')) || Number(this.dataset.quantityDefault),
+          //     productId: this.dataset.productId,
+          //     sections: response.sections,
+          //   })
+          // );
         }
       })
       .catch((error) => {
@@ -582,7 +582,7 @@ class ProductFormComponent extends Component {
           setTimeout(() => this.#clearLiveRegionText(), SUCCESS_MESSAGE_DISPLAY_DURATION);
         }
 
-        // const cart = await this.#fetchAndUpdateCartQuantity();
+        const cart = await this.#fetchAndUpdateCartQuantity();
 
         const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
         this.dispatchEvent(
