@@ -519,6 +519,8 @@ class ProductFormComponent extends Component {
       sections: cartItemComponentsSectionIds.join(','),
     };
 
+    console.log("payload", payload)
+
     fetch(Theme.routes.cart_add_url, {
       method: 'POST',
       headers: {
