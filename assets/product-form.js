@@ -315,7 +315,6 @@ class ProductFormComponent extends Component {
    * @param {Event} [event]
    */
   #processAddToCart(overrideVariantId, overrideQuantity, event) {
-    alert(overrideVariantId)
     const { addToCartTextError } = this.refs;
 
     if (this.#timeout) clearTimeout(this.#timeout);
@@ -396,6 +395,8 @@ class ProductFormComponent extends Component {
     console.log(cartItemComponentsSectionIds)
 
     const fetchCfg = fetchConfig('javascript', { body: formData });
+
+    console.log("Product From data <======>" , formData)
 
     fetch(Theme.routes.cart_add_url, {
       ...fetchCfg,
