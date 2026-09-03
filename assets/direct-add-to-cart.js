@@ -8,30 +8,12 @@
   // UPDATE CART UI
   // ==========================================
 
-  function test_cart(sections) {
-  if (!sections) {
-    console.error('No cart sections returned');
-    return;
-  }
-
-  console.log('Updating cart UI with sections:', sections);
+ function test_cart(sections) {
+  if (!sections) return;
 
   Object.entries(sections).forEach(([sectionId, html]) => {
 
-    // Shopify section wrapper ID
-    const currentSection = document.getElementById(
-      `shopify-section-${sectionId}`
-    );
-
-    if (!currentSection) {
-      console.warn(
-        'Section not found in DOM:',
-        `shopify-section-${sectionId}`
-      );
-      return;
-    }
-
-    // Convert Shopify returned HTML into DOM
+    // Parse Shopify's new section HTML
     const parser = new DOMParser();
 
     const newDocument = parser.parseFromString(
@@ -39,25 +21,26 @@
       'text/html'
     );
 
-    const newSection = newDocument.querySelector(
-      `#${CSS.escape(`shopify-section-${sectionId}`)}`
-    );
+    // Find NEW cart count from Shopify response
+    const newCartCount =
+      newDocument.querySelector('.cart-count');
 
-    console.log("new Section ",newSection)
-    if (!newSection) {
-      console.warn(
-        'New section not found:',
-        sectionId
-      );
+    // Find CURRENT cart count on the page
+    const currentCartCount =
+      document.querySelector('.cart-count');
+
+    if (!newCartCount || !currentCartCount) {
+      console.warn('Cart count element not found');
       return;
     }
 
-    // Replace old header with new header
-    currentSection.replaceWith(newSection);
+    // Update ONLY the cart count
+    currentCartCount.textContent =
+      newCartCount.textContent;
 
     console.log(
-      'Successfully updated:',
-      `shopify-section-${sectionId}`
+      'Cart count updated:',
+      newCartCount.textContent
     );
   });
 }
