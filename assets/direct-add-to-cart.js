@@ -5,142 +5,207 @@
 
 
   // =====================================================
-  // UPDATE ONLY CART ICON + CART NUMBER
+  // UPDATE CART ICON + CART DRAWER
   // =====================================================
 
-  async function test_cart() {
+  async function test_cart(sections) {
     try {
-      // Get latest cart
-      const response = await fetch('/cart.js');
 
-      if (!response.ok) {
+      // =================================================
+      // 1. GET CURRENT CART
+      // =================================================
+
+      const cartResponse = await fetch('/cart.js');
+
+      if (!cartResponse.ok) {
         throw new Error('Failed to fetch cart');
       }
 
-      const cart = await response.json();
+      const cart = await cartResponse.json();
 
       console.log('Latest cart:', cart);
 
 
-      // -----------------------------------------------
-      // Cart total quantity
-      // -----------------------------------------------
-
-      const cartCount = cart.item_count;
-
-      console.log('Cart item count:', cartCount);
-
-
-      // -----------------------------------------------
-      // Find cart icon
-      // -----------------------------------------------
+      // =================================================
+      // 2. UPDATE CART ICON NUMBER
+      // =================================================
 
       const cartIcon =
         document.querySelector('cart-icon');
 
-      if (!cartIcon) {
-        console.warn('cart-icon not found');
-        return cart;
+      if (cartIcon) {
+
+        const cartBubble =
+          cartIcon.querySelector(
+            '[ref="cartBubble"]'
+          );
+
+        const cartBubbleCount =
+          cartIcon.querySelector(
+            '[ref="cartBubbleCount"]'
+          );
+
+
+        if (
+          cartBubble &&
+          cartBubbleCount
+        ) {
+
+          // Update number
+          cartBubbleCount.textContent =
+            cart.item_count.toString();
+
+
+          // Show / hide bubble
+          if (cart.item_count > 0) {
+
+            cartBubble.classList.remove(
+              'visually-hidden'
+            );
+
+            cartBubbleCount.classList.remove(
+              'hidden'
+            );
+
+            cartBubbleCount.setAttribute(
+              'aria-hidden',
+              'false'
+            );
+
+          } else {
+
+            cartBubble.classList.add(
+              'visually-hidden'
+            );
+
+            cartBubbleCount.classList.add(
+              'hidden'
+            );
+
+            cartBubbleCount.setAttribute(
+              'aria-hidden',
+              'true'
+            );
+          }
+        }
       }
 
 
-      // -----------------------------------------------
-      // Find cart bubble
-      // -----------------------------------------------
+      // =================================================
+      // 3. UPDATE CART DRAWER
+      // =================================================
 
-      const cartBubble =
-        cartIcon.querySelector(
-          '[ref="cartBubble"]'
-        );
-
-      const cartBubbleCount =
-        cartIcon.querySelector(
-          '[ref="cartBubbleCount"]'
-        );
-
-
-      if (!cartBubble || !cartBubbleCount) {
+      if (!sections) {
         console.warn(
-          'Cart bubble or cart bubble count not found'
+          'No sections returned'
         );
 
         return cart;
-      }
-
-
-      // -----------------------------------------------
-      // UPDATE NUMBER
-      // -----------------------------------------------
-
-      cartBubbleCount.textContent =
-        cartCount.toString();
-
-
-      // -----------------------------------------------
-      // SHOW / HIDE CART BUBBLE
-      // -----------------------------------------------
-
-      if (cartCount > 0) {
-
-        cartBubble.classList.remove(
-          'visually-hidden'
-        );
-
-        cartBubbleCount.classList.remove(
-          'hidden'
-        );
-
-        cartBubbleCount.setAttribute(
-          'aria-hidden',
-          'false'
-        );
-
-      } else {
-
-        cartBubble.classList.add(
-          'visually-hidden'
-        );
-
-        cartBubbleCount.classList.add(
-          'hidden'
-        );
-
-        cartBubbleCount.setAttribute(
-          'aria-hidden',
-          'true'
-        );
-      }
-
-
-      // -----------------------------------------------
-      // UPDATE ACCESSIBILITY TEXT
-      // -----------------------------------------------
-
-      const cartBubbleText =
-        cartIcon.querySelector(
-          '[ref="cartBubbleText"]'
-        );
-
-      if (cartBubbleText) {
-
-        cartBubbleText.setAttribute(
-          'aria-label',
-          `Cart contains ${cartCount} items`
-        );
       }
 
 
       console.log(
-        'Cart icon updated:',
-        cartCount
+        'Sections received:',
+        sections
       );
+
+
+      // Get returned header section
+      const sectionHtml =
+        Object.values(sections)[0];
+
+
+      if (!sectionHtml) {
+        console.warn(
+          'No section HTML found'
+        );
+
+        return cart;
+      }
+
+
+      // Parse Shopify HTML
+      const parser =
+        new DOMParser();
+
+      const newDocument =
+        parser.parseFromString(
+          sectionHtml,
+          'text/html'
+        );
+
+
+      // =================================================
+      // Find NEW cart items component
+      // =================================================
+
+      const newCartItems =
+        newDocument.querySelector(
+          'cart-items-component'
+        );
+
+
+      if (!newCartItems) {
+
+        console.warn(
+          'New cart-items-component not found'
+        );
+
+        return cart;
+      }
+
+
+      // =================================================
+      // Find CURRENT cart items component
+      // =================================================
+
+      const currentCartItems =
+        document.querySelector(
+          'cart-items-component'
+        );
+
+
+      if (!currentCartItems) {
+
+        console.warn(
+          'Current cart-items-component not found'
+        );
+
+        return cart;
+      }
+
+
+      // =================================================
+      // IMPORTANT
+      // =================================================
+      // Don't replace the whole header.
+      // Replace only the cart-items-component content.
+      // =================================================
+
+      currentCartItems.innerHTML =
+        newCartItems.innerHTML;
+
+
+      // Keep data attributes
+      currentCartItems.setAttribute(
+        'data-section-id',
+        newCartItems.getAttribute(
+          'data-section-id'
+        ) || ''
+      );
+
+
+      console.log(
+        'Cart drawer updated'
+      );
+
 
       return cart;
 
     } catch (error) {
 
       console.error(
-        'Failed to update cart icon:',
+        'test_cart error:',
         error
       );
 
@@ -163,6 +228,7 @@
           '.direct_addtocart_btn'
         );
 
+
       if (!button) return;
 
 
@@ -177,7 +243,8 @@
       }
 
 
-      button.dataset.loading = 'true';
+      button.dataset.loading =
+        'true';
 
 
       try {
@@ -206,10 +273,11 @@
         // GET VARIANT ID
         // ===============================================
 
-        const url = new URL(
-          variantUrl,
-          window.location.origin
-        );
+        const url =
+          new URL(
+            variantUrl,
+            window.location.origin
+          );
 
 
         const variantId =
@@ -258,6 +326,7 @@
               sectionIds.push(
                 item.dataset.sectionId
               );
+
             }
 
           }
@@ -265,13 +334,13 @@
 
 
         console.log(
-          'Cart sections:',
+          'Section IDs:',
           sectionIds
         );
 
 
         // ===============================================
-        // ADD PRODUCT TO CART
+        // ADD TO CART
         // ===============================================
 
         const response =
@@ -292,7 +361,9 @@
 
                 items: [
                   {
-                    id: Number(variantId),
+                    id:
+                      Number(variantId),
+
                     quantity: 1
                   }
                 ],
@@ -306,7 +377,7 @@
 
 
         // ===============================================
-        // HANDLE ERROR
+        // ERROR
         // ===============================================
 
         if (!response.ok) {
@@ -329,7 +400,7 @@
 
 
         // ===============================================
-        // SUCCESS RESPONSE
+        // SUCCESS
         // ===============================================
 
         const data =
@@ -343,21 +414,24 @@
 
 
         console.log(
-          'Cart sections returned:',
+          'Returned sections:',
           data.sections
         );
 
 
         // ===============================================
-        // ⭐ UPDATE ONLY CART ICON
+        // ⭐ UPDATE CART
         // ===============================================
 
-        await test_cart();
+        await test_cart(
+          data.sections
+        );
 
 
         console.log(
-          'Cart icon successfully updated'
+          'Everything updated'
         );
+
 
       } catch (error) {
 
