@@ -43,6 +43,7 @@
       `#${CSS.escape(`shopify-section-${sectionId}`)}`
     );
 
+    console.log(newSection)
     if (!newSection) {
       console.warn(
         'New section not found:',
