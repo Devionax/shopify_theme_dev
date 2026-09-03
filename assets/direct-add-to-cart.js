@@ -214,70 +214,32 @@
   // }
 
 
-  function test_cart(sections, items) {
-  if (!sections) return;
-
-  // -------------------------------
-  // Calculate added quantity
-  // -------------------------------
-
-  const addedQuantity = items.reduce(
-    (total, item) => total + item.quantity,
-    0
-  );
-
-  // -------------------------------
-  // Existing cart count
-  // -------------------------------
-
-  const cartBubble =
-    document.querySelector(
-      'cart-icon [ref="cartBubble"]'
-    );
-
-  const cartBubbleCount =
-    document.querySelector(
-      'cart-icon [ref="cartBubbleCount"]'
-    );
-
-  if (cartBubble && cartBubbleCount) {
-
-    const currentCount =
-      Number(
-        cartBubbleCount.textContent
-      ) || 0;
-
-    const newCount =
-      currentCount + addedQuantity;
-
-    cartBubbleCount.textContent =
-      newCount.toString();
-
-    cartBubble.classList.remove(
-      'visually-hidden'
-    );
-
-    cartBubbleCount.classList.remove(
-      'hidden'
-    );
-
-    cartBubbleCount.setAttribute(
-      'aria-hidden',
-      'false'
-    );
+  function test_cart(sections) {
+  if (!sections) {
+    console.warn('No sections returned');
+    return;
   }
 
-  // -------------------------------
-  // Update cart drawer
-  // -------------------------------
+  console.log('Updating cart UI:', sections);
+
+  // ==========================================
+  // Get returned Shopify section HTML
+  // ==========================================
 
   const sectionHtml =
     Object.values(sections)[0];
 
-  if (!sectionHtml) return;
+  if (!sectionHtml) {
+    console.warn('Section HTML not found');
+    return;
+  }
 
-  const parser =
-    new DOMParser();
+
+  // ==========================================
+  // Convert HTML string → DOM
+  // ==========================================
+
+  const parser = new DOMParser();
 
   const newDocument =
     parser.parseFromString(
@@ -285,22 +247,127 @@
       'text/html'
     );
 
+
+  // ==========================================
+  // Get NEW cart count from Shopify HTML
+  // ==========================================
+
+  const newCartCount =
+    newDocument.querySelector(
+      '[ref="cartBubbleCount"]'
+    );
+
+
+  // ==========================================
+  // Get CURRENT cart count
+  // ==========================================
+
+  const currentCartCount =
+    document.querySelector(
+      'cart-icon [ref="cartBubbleCount"]'
+    );
+
+
+  const currentCartBubble =
+    document.querySelector(
+      'cart-icon [ref="cartBubble"]'
+    );
+
+
+  // ==========================================
+  // Update ONLY cart number
+  // ==========================================
+
+  if (
+    newCartCount &&
+    currentCartCount
+  ) {
+
+    currentCartCount.textContent =
+      newCartCount.textContent.trim();
+
+    console.log(
+      'Cart number updated:',
+      newCartCount.textContent.trim()
+    );
+  }
+
+
+  // ==========================================
+  // Update cart bubble visibility
+  // ==========================================
+
+  if (
+    currentCartBubble &&
+    currentCartCount
+  ) {
+
+    const count =
+      Number(
+        newCartCount?.textContent.trim()
+      ) || 0;
+
+
+    if (count > 0) {
+
+      currentCartBubble.classList.remove(
+        'visually-hidden'
+      );
+
+      currentCartCount.classList.remove(
+        'hidden'
+      );
+
+      currentCartCount.setAttribute(
+        'aria-hidden',
+        'false'
+      );
+
+    } else {
+
+      currentCartBubble.classList.add(
+        'visually-hidden'
+      );
+
+      currentCartCount.classList.add(
+        'hidden'
+      );
+
+      currentCartCount.setAttribute(
+        'aria-hidden',
+        'true'
+      );
+    }
+  }
+
+
+  // ==========================================
+  // Update CART DRAWER
+  // ==========================================
+
   const newCartItems =
     newDocument.querySelector(
       'cart-items-component'
     );
+
 
   const currentCartItems =
     document.querySelector(
       'cart-items-component'
     );
 
+
   if (
     newCartItems &&
     currentCartItems
   ) {
+
     currentCartItems.innerHTML =
       newCartItems.innerHTML;
+
+    console.log(
+      'Cart drawer updated'
+    );
   }
 }
 
