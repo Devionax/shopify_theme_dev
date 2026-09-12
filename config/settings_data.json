@@ -111,6 +111,13 @@
       }
     },
     "content_for_index": [],
+    "blocks": {
+      "13067706111923492951": {
+        "type": "shopify://apps/product-notes/blocks/product-count/01a091a6-b245-74e6-b28d-309956fa5b44",
+        "disabled": false,
+        "settings": {}
+      }
+    },
     "color_schemes": {
       "scheme-1": {
         "settings": {
