@@ -55,10 +55,52 @@
         "padding-block-start": 0,
         "padding-block-end": 0
       }
+    },
+    "1790056995fe682d73": {
+      "type": "_blocks",
+      "blocks": {
+        "product_notes_bundle_components_NeFG9N": {
+          "type": "shopify://apps/product-notes/blocks/bundle-components/01a0be1c-478d-7a23-86ad-ba676ac4f6f8",
+          "settings": {
+            "heading": "What's Included"
+          }
+        }
+      },
+      "block_order": [
+        "product_notes_bundle_components_NeFG9N"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
     "divider_BeATcA",
-    "17891501522423aaec"
+    "17891501522423aaec",
+    "1790056995fe682d73"
   ]
 }
