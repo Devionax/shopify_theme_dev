@@ -454,7 +454,7 @@
   }
 
   .header[transparent] {
-    --language-button-background-color: black;
+    --language-button-background-color: transparent;
     --language-button-border-color: transparent;
     --header-content-transition-timing: calc(var(--submenu-animation-speed) - var(--animation-speed-fast))
       var(--animation-speed-fast) var(--ease-out-cubic);
@@ -540,13 +540,13 @@
   .header-section {
     position: relative;
     z-index: var(--layer-heightened);
-    background: black;
   }
 
   /* need default values for non-flash transitions on first overflow menu open */
   #header-component {
     --submenu-height: 0px;
     --full-open-header-height: 0px;
+    background: black;
   }
 
   #header-group:has(#header-component[sticky]) {
