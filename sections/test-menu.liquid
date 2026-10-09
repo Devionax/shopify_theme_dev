@@ -1,0 +1,210 @@
+
+{% liquid
+  assign menu = section.settings.menu
+%}
+
+<section class="test-menu-section">
+  <div class="test-menu-bar">
+    <a class="test-menu-logo" href="{{ routes.root_url }}">
+      {{ shop.name | escape }}
+    </a>
+
+    <nav class="test-menu-nav" aria-label="Test navigation">
+      {% if menu != blank %}
+        <ul class="test-menu-list">
+          {% for link in menu.links %}
+            <li class="test-menu-item">
+
+              {% if link.links != blank %}
+                <details class="test-menu-dropdown">
+                  <summary class="test-menu-link">
+                    {{ link.title | escape }}
+                    <span class="test-menu-arrow" aria-hidden="true">⌄</span>
+                  </summary>
+
+                  <ul class="test-menu-submenu">
+                    {% for child_link in link.links %}
+                      <li class="test-menu-child">
+
+                        {% if child_link.links != blank %}
+                          <details class="test-menu-nested">
+                            <summary class="test-menu-link">
+                              {{ child_link.title | escape }}
+                              <span class="test-menu-arrow" aria-hidden="true">›</span>
+                            </summary>
+
+                            <ul class="test-menu-submenu test-menu-submenu-nested">
+                              {% for grandchild_link in child_link.links %}
+                                <li>
+                                  <a class="test-menu-link"
+                                     href="{{ grandchild_link.url }}">
+                                    {{ grandchild_link.title | escape }}
+                                  </a>
+                                </li>
+                              {% endfor %}
+                            </ul>
+                          </details>
+                        {% else %}
+                          <a class="test-menu-link"
+                             href="{{ child_link.url }}">
+                            {{ child_link.title | escape }}
+                          </a>
+                        {% endif %}
+
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </details>
+              {% else %}
+                <a class="test-menu-link"
+                   href="{{ link.url }}">
+                  {{ link.title | escape }}
+                </a>
+              {% endif %}
+
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>Select a menu in this section's settings.</p>
+      {% endif %}
+    </nav>
+  </div>
+</section>
+
+<style>
+  .test-menu-section {
+    position: relative;
+    z-index: 10;
+    background: #ffffff;
+    color: #171717;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .test-menu-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 16px 4%;
+  }
+
+  .test-menu-logo {
+    color: inherit;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .test-menu-list,
+  .test-menu-submenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .test-menu-list {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .test-menu-item,
+  .test-menu-child,
+  .test-menu-dropdown,
+  .test-menu-nested {
+    position: relative;
+  }
+
+  .test-menu-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 14px;
+    color: inherit;
+    text-decoration: none;
+    font: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+
+  .test-menu-link:hover {
+    background: #f3f3f3;
+  }
+
+  .test-menu-arrow {
+    font-size: 16px;
+  }
+
+  .test-menu-submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 210px;
+    padding: 8px;
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    box-shadow: 0 12px 28px rgb(0 0 0 / 10%);
+  }
+
+  .test-menu-submenu .test-menu-link {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .test-menu-nested > .test-menu-submenu {
+    top: 0;
+    left: 100%;
+  }
+
+  .test-menu-dropdown:not([open]) > .test-menu-submenu,
+  .test-menu-nested:not([open]) > .test-menu-submenu {
+    display: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .test-menu-bar {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .test-menu-list {
+      flex-wrap: wrap;
+    }
+
+    .test-menu-submenu {
+      position: static;
+      min-width: 180px;
+      margin: 4px 0 4px 12px;
+      box-shadow: none;
+    }
+
+    .test-menu-nested > .test-menu-submenu {
+      position: static;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Test menu",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Choose navigation menu"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Test menu"
+    }
+  ]
+}
+{% endschema %}
