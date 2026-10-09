@@ -55,10 +55,18 @@
         "padding-block-start": 0,
         "padding-block-end": 0
       }
+    },
+    "test_menu_YGmkFB": {
+      "type": "test-menu",
+      "name": "Test menu",
+      "settings": {
+        "menu": "main-menu"
+      }
     }
   },
   "order": [
     "divider_BeATcA",
-    "17891501522423aaec"
+    "17891501522423aaec",
+    "test_menu_YGmkFB"
   ]
 }
